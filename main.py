@@ -19,8 +19,8 @@ DRAMP 2.0, an updated data repository of antimicrobial peptides
 import pandas as pd
 import os 
 
-root_path = "/mnt/c/works/RKI/AMP_DB/AMPs"
-root_output_path = "/mnt/c/works/RKI/AMP_DB/fasta"
+root_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/AMPs"
+root_output_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/fasta"
 
 
 def createID(ID, source, seq_type=None, description=None):
@@ -30,6 +30,9 @@ def createID(ID, source, seq_type=None, description=None):
     if description is not None:
         header = header + "|" + description
     return header 
+
+# symbolToCheck = ["A","B"""]
+
 
 
 # %%
@@ -46,7 +49,7 @@ def converterForDRAMP(filename):
             header = createID(row['DRAMP_ID'], filename)
             #print(header)
             file.write(header + '\n')
-            seq = row['Sequence']
+            seq = row['Sequence'].upper() # Convert to upper case
             #print(seq)
             file.write(seq + '\n')
 
@@ -92,7 +95,7 @@ def converterForCancerPPD(filename):
             header = createID(str(row['id']), filename)
             #print(header)
             file.write(header + '\n')
-            seq = row['Sequence'].upper()
+            seq = row['Sequence'].upper() # Convert to upper case
             #print(seq)
             file.write(seq + '\n')
 
@@ -118,16 +121,6 @@ for file_name in file_names:
     converterForCancerPPD(file_name)
 
 print("--- End of CancerPPD ----")
-
-
-# %%
-input_path = os.path.join(root_path, "CancerPPD_mix_natural.txt")
-df = pd.read_csv(input_path, sep='\t', header=[0])
-df['id'] = df['id'].astype(str)
-grouped_df = df.groupby("Sequence")
-grouped_lists = grouped_df["id"].agg(lambda column: ",".join(column))
-grouped_lists = grouped_lists.reset_index(name="id")
-
 
 
 # %%
@@ -179,7 +172,7 @@ with open(out_path, 'w') as file:
         header = createID(row['PeptideID'], filename)
         # print(header)
         file.write(header + '\n')
-        seq = row['PeptideSequence']
+        seq = row['PeptideSequence'].upper() # Convert to upper case
         # print(seq)
         file.write(seq + '\n')
 print("--- End of BAAMPs_data ----")
@@ -267,7 +260,7 @@ with open(out_path, 'w') as file:
         header = createID(row['ID'], filename)
         # print(header)
         file.write(header + '\n')
-        seq = row['SEQUENCE']
+        seq = row['SEQUENCE'].upper() # Convert to upper case
         # print(seq)
         file.write(seq + '\n')
 print("--- End of HIPdb_data ----")
@@ -297,7 +290,7 @@ with open(out_path, 'w') as file:
         header = createID(row['ID'], filename)
         # print(header)
         file.write(header + '\n')
-        seq = row['SEQUENCE']
+        seq = row['SEQUENCE'].upper() # Convert to upper case
         # print(seq)
         file.write(seq + '\n')
 
@@ -334,4 +327,48 @@ with open(out_path, 'w') as file:
         file.write(seq + '\n')
 
 print("--- End of DAPD ----")
+# %%
+# DAPD
+print("--- milkampdb ----")
+filename = "milkampdb"
+input_path = os.path.join(root_path, filename+".csv")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+df = pd.read_csv(input_path, header=0, usecols=['id', 'Sequence'])
+# trim white space 
+df['Sequence'] = df['Sequence'].str.strip()
+# remove empty value / Not protein symbol
+df = df.dropna()
+df = df[~df.Sequence.str.contains("Not determined")]
+# chop semicolon 
+df['Sequence'] = df['Sequence'].str.split(';').str[0]
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['id'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        header = createID(row['id'], filename)
+        # print(header)
+        file.write(header + '\n')
+        seq = row['Sequence']
+        # print(seq)
+        file.write(seq + '\n')
+
+print("--- End of milkampdb ----")
+# %%
+# Merge all
+
+DIR = '/mnt/c/works/RKI/AMPsConverter/AMP_DB/'
+oh = open( os.path.join(DIR,'one_fasta_file.fasta'), 'w')
+
+for f in os.listdir(root_output_path):
+    fh = open(os.path.join(root_output_path, f))
+    for line in fh:
+        oh.write(line)
+    fh.close()
+oh.close()
 # %%

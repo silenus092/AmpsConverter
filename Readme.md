@@ -208,14 +208,41 @@ Note:
  1. lower case?
 
 ## **MilkAMP**
-
-
 ### <u>How To</u>
 1. Download from http://milkampdb.org/entrieslist.php?export=csv
 
 ### <u>How To convert originial source to FASTA format</u>
 ```python
-Not implement yet
+print("--- milkampdb ----")
+filename = "milkampdb"
+input_path = os.path.join(root_path, filename+".csv")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+df = pd.read_csv(input_path, header=0, usecols=['id', 'Sequence'])
+# trim white space 
+df['Sequence'] = df['Sequence'].str.strip()
+# remove empty value / Not protein symbol
+df = df.dropna()
+df = df[~df.Sequence.str.contains("Not determined")]
+# chop semicolon 
+df['Sequence'] = df['Sequence'].str.split(';').str[0]
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['id'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        header = createID(row['id'], filename)
+        # print(header)
+        file.write(header + '\n')
+        seq = row['Sequence']
+        # print(seq)
+        file.write(seq + '\n')
+
+print("--- End of milkampdb ----")
 ```
 Note:
  1. different format? `APRKNVRWCTISQPEW/CIRA;`
