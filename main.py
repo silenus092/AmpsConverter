@@ -36,8 +36,10 @@ def createID(ID, source, seq_type=None, description=None):
 
 
 # %%
-
 # DRAMP
+# 1. remove  "-spacer-"
+# 2. remove whitespace
+
 def converterForDRAMP(filename):
     input_path = os.path.join(root_path, filename+".xlsx")
     out_path = os.path.join(root_output_path, filename+".fasta")
@@ -46,11 +48,19 @@ def converterForDRAMP(filename):
     df = groupDRAMPDuplication(df)
     with open(out_path, 'w') as file:
         for index, row in df.iterrows():
+            if "unknown" in  row['Sequence'].lower():
+                continue
+            if  "-spacer-" in  row['Sequence']:
+                continue
             header = createID(row['DRAMP_ID'], filename)
             #print(header)
             file.write(header + '\n')
-            seq = row['Sequence'].upper() # Convert to upper case
-            #print(seq)
+            seq = row['Sequence'] 
+            if " " in seq:
+                #print("Found whitespace:"+seq)
+                seq = seq.replace(" ", "")
+            if "-" in seq:
+                print("Found '-':"+seq)
             file.write(seq + '\n')
 
 def groupDRAMPDuplication(df):
@@ -84,19 +94,25 @@ print("--- End of DRAMP ----")
 # %%
 # CancerPPD
 # lower case?
+searchfor = ["not available", "structure given"]
+
 def converterForCancerPPD(filename):
     input_path = os.path.join(root_path, filename+".txt")
     out_path = os.path.join(root_output_path, filename+".fasta")
     # Load File
     df = pd.read_csv(input_path, sep='\t', header=[0])
     df = groupCancerPPDDuplication(df)
+    df = df[~df.Sequence.str.contains('|'.join(searchfor), case=False)]
+
     with open(out_path, 'w') as file:
         for index, row in df.iterrows():
             header = createID(str(row['id']), filename)
             #print(header)
             file.write(header + '\n')
             seq = row['Sequence'].upper() # Convert to upper case
-            #print(seq)
+            if " " in seq:
+                print("Found whitespace:"+seq)
+                seq = seq.replace(" ", "")
             file.write(seq + '\n')
 
 def groupCancerPPDDuplication(df):
@@ -107,9 +123,9 @@ def groupCancerPPDDuplication(df):
     return grouped_lists
 
 file_names=["CancerPPD_d_natural",
-            "CancerPPD_d_non-natural",
+            #"CancerPPD_d_non-natural",
             "CancerPPD_l_natural",
-            "CancerPPD_l_non-natural",
+            #"CancerPPD_l_non-natural",
             "CancerPPD_mix_natural",
             #"CancerPPD_mix_non-natural"
             ]
@@ -138,13 +154,16 @@ grouped_df = df.groupby("Sequence")
 grouped_lists = grouped_df["Id"].agg(lambda column: ",".join(column))
 grouped_lists = grouped_lists.reset_index()
 
-print(file_name)
+print(filename)
 with open(out_path, 'w') as file:
     for index, row in grouped_lists.iterrows():
         header = createID(row['Id'], filename)
         # print(header)
         file.write(header + '\n')
         seq = row['Sequence']
+        if " " in seq:
+            print("Found whitespace:"+seq)
+            seq = seq.replace(" ", "")
         # print(seq)
         file.write(seq + '\n')
 print("--- End of AVPdb_data ----")
@@ -220,6 +239,10 @@ df = pd.read_csv(input_path, header=[0], sep='\t', encoding='utf8' )
 # create new ID
 df['ID'] = df['ID'].apply(lambda row: str(row)+"_Hemolytik_allsequences")
 
+searchfor = ["β", "[", "]","(" , ")", "/", "-", "Ψ","Δ",
+ "1","2","3","4","5","6","7","8","9","0"] 
+#df = df[~df.SEQ.str.contains('|'.join(searchfor), case=False)]
+
 # Group duplication
 df['ID'] = df['ID'].astype(str)
 grouped_df = df.groupby("SEQ")
@@ -229,10 +252,21 @@ grouped_lists = grouped_lists.reset_index()
 print(filename)
 with open(out_path, 'w') as file:
     for index, row in grouped_lists.iterrows():
+        seq = row['SEQ']
+        if any(x in seq for x in searchfor):
+            print("special:"+seq)
+            continue
+        if any(c.islower() for c in seq):
+            seq = seq.upper()
+            # print("Upper:"+seq)
+
+        if " " in seq:
+            print("Found whitespace:"+seq)
+            seq = seq.replace(" ", "")
         header = createID(row['ID'], filename)
         # print(header)
         file.write(header + '\n')
-        seq = row['SEQ']
+        
         # print(seq)
         file.write(seq + '\n')
 
@@ -260,7 +294,11 @@ with open(out_path, 'w') as file:
         header = createID(row['ID'], filename)
         # print(header)
         file.write(header + '\n')
-        seq = row['SEQUENCE'].upper() # Convert to upper case
+        seq = row['SEQUENCE']
+        if " " in seq:
+           print(seq)
+           seq = seq.replace(" ", "")
+
         # print(seq)
         file.write(seq + '\n')
 print("--- End of HIPdb_data ----")
@@ -269,6 +307,8 @@ print("--- End of HIPdb_data ----")
 # %% 
 # dbaasp_peptides
 # lower case?
+import csv
+
 print("--- dbaasp_peptides ----")
 filename = "dbaasp_peptides"
 input_path = os.path.join(root_path, filename+".csv")
@@ -291,6 +331,12 @@ with open(out_path, 'w') as file:
         # print(header)
         file.write(header + '\n')
         seq = row['SEQUENCE'].upper() # Convert to upper case
+        if "HBD3" in seq: # temporally fix
+           seq = "GIINTLQKYYCRVRGGRCAVLSCLPKEEQIGKCSTRGRKCCRRKK"
+        if " " in seq:
+           print("Found whitespace:"+seq)
+           seq = seq.replace(" ", "")
+
         # print(seq)
         file.write(seq + '\n')
 
@@ -351,14 +397,109 @@ grouped_lists = grouped_lists.reset_index()
 print(filename)
 with open(out_path, 'w') as file:
     for index, row in grouped_lists.iterrows():
+        seq = row['Sequence']
+        if "/" in seq: # temporally fix
+           continue
         header = createID(row['id'], filename)
         # print(header)
         file.write(header + '\n')
-        seq = row['Sequence']
         # print(seq)
         file.write(seq + '\n')
 
 print("--- End of milkampdb ----")
+
+# %%
+# APD3_update2020_release
+print("--- APD3_update2020_release ----")
+filename = "APD3_update2020_release"
+input_path = os.path.join(root_path, filename+".fasta")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(input_path, mode='r') as in_file, \
+     open(out_path, mode='w') as out_file:
+    for line in in_file:
+        if line.startswith(">"): # skip lines that start with > 
+            out_file.write(line)
+            continue
+        removedWhite_line = line.strip() # strip whitespace
+        out_file.write(removedWhite_line + '\n')
+
+print("--- End of APD3_update2020_release ----")
+
+# %%
+# enzy2
+# natural / synthatic
+print("--- enzy2 ----")
+from Bio import *
+
+filename = "enzy2"
+input_path = os.path.join(root_path, filename+".fasta")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(out_path, 'w') as f_out:
+    for seq_record in SeqIO.parse(open(input_path, mode='r'), 'fasta'):
+        if "-" in  seq_record.seq:
+            print('SequenceID = '  + seq_record.id)
+            continue
+        r=SeqIO.write(seq_record, f_out, 'fasta')
+        if r!=1: print('Error while writing sequence:  ' + seq_record.id)
+
+print("--- End of enzy2 ----")
+
+
+# %%
+# LAMP2
+# lower case?
+print("--- LAMP2 ----")
+filename = "LAMP2"
+input_path = os.path.join(root_path, filename+".FASTA")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(input_path, mode='r') as in_file, \
+     open(out_path, mode='w') as out_file:
+    for line in in_file:
+        if line.startswith(">"): # skip lines that start with > 
+            out_file.write(line.strip()+ '\n')
+            continue
+        if " " in line:
+            line = line.replace(" ", "")
+        line = line.upper()
+        out_file.write(line )
+
+print("--- End of LAMP2 ----")
+# %%
+# erop
+# +: to denote +H2, which is the open N-terminus
+# b: for an acetyl residue or other chemical group at the N-terminus
+# -: to denote O-, which is the open C-terminus
+# z: for an amide bond at the C-terminus
+# J: to denote the pyroglutaminyl linkage, formed by an N-terminal glutamine, due to side-chain reaction with the terminal amine residue
+# U: for the (occasional) aminoisobutyric acid residue.
+#
+print("--- erop ----")
+filename = "erop"
+input_path = os.path.join(root_path, filename+".FASTA")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(input_path, mode='r') as in_file, \
+     open(out_path, mode='w') as out_file:
+    for line in in_file:
+        if line.startswith(">"): # skip lines that start with > 
+            out_file.write(line.strip()+ '\n')
+            continue
+
+        line = line.replace("+", "")
+        line = line.replace("-", "")
+        line = line.replace("b", "")
+        line = line.replace("z", "")
+        if " " in line:
+            line = line.replace(" ", "")
+        out_file.write(line)
+
+print("--- End of erop ----")
+
+
+
 # %%
 # Merge all
 
@@ -371,4 +512,3 @@ for f in os.listdir(root_output_path):
         oh.write(line)
     fh.close()
 oh.close()
-# %%

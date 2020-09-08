@@ -16,6 +16,13 @@ Tools for fasta conversion that supports the following AMP Databases
 14. BACTIBASE : Database Dedicated to Bacteriocin (Filter by antimicrobial keyword  )
 15. DRAMP 2.0, an updated data repository of antimicrobial peptides
 
+# Collecting and Fitlering
+Strategies:
+1. Convert lower case to upper case
+2. Remove white space between seqeunce or beginning and ending (e.g. "VEWNEMT WMEWEREI ENYTKLIYKILEESQEQ" to "VEWNEMTWMEWEREIENYTKLIYKILEESQEQ")
+3. Remove empty lines
+4. Remove none protien seqeunce charater or unrelated words  (e.g. "+FRPKFGK-" or "structure given" or "NOT AVAILABLE")
+5. Remove unsure sequence. (e.g. "fCYwO-CyLeu-Pen-TKKr" or "βAlaFTicO")
 
 ## **DBAASP**
 

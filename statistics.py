@@ -37,7 +37,7 @@ def countProtien(file):
     with open(file) as f:
         counts = Counter()
         for line in f: # iterate over file object, no need to read all contents onto memory
-            if line.startswith(">") or not line.strip(): # skip lines that start with > OR  The empty string is a False value.
+            if line.startswith(">") or line == "" or  not line.strip(): # skip lines that start with > OR  The empty string is a False value.
                 continue
             counts.update(line.rstrip())
         total = float(sum(counts.values()))
@@ -45,7 +45,6 @@ def countProtien(file):
             print("{}: {}, ({:.2%})".format(key,val, val / total))
 
     plotCharDistribution(counts, total, file)
-
 
 for f in os.listdir(root_fasta_path):
     print( "---------"+ f + "---------")
