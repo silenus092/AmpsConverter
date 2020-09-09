@@ -464,7 +464,8 @@ with open(input_path, mode='r') as in_file, \
         if " " in line:
             line = line.replace(" ", "")
         line = line.upper()
-        out_file.write(line )
+        out_file.write(line)
+    out_file.write("\n")
 
 print("--- End of LAMP2 ----")
 # %%
@@ -512,3 +513,33 @@ for f in os.listdir(root_output_path):
         oh.write(line)
     fh.close()
 oh.close()
+print("------ Merging completed ------")
+
+# %%
+# Sort in Descending order ( sort them by length, the longest records first)
+from Bio import SeqIO
+one_fasta_file = '/mnt/c/works/RKI/AMPsConverter/AMP_DB/one_fasta_file.fasta'
+output_fasta_file = '/mnt/c/works/RKI/AMPsConverter/AMP_DB/one_fasta_file.sorted.fasta'
+
+records = list(SeqIO.parse(one_fasta_file, "fasta"))
+records.sort(key=lambda r: -len(r))
+SeqIO.write(records, output_fasta_file, "fasta")
+print("------ Sorting completed ------")
+
+# %%
+# Run clustering 
+from subprocess import Popen, PIPE
+
+output_report = '/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100'
+
+process = Popen(['/mnt/c/works/RKI/tools/cdhit/cd-hit',
+                    '-i', output_fasta_file,
+                    '-o', output_report,
+                     "-c","1" ], stdout=PIPE, stderr=PIPE)
+stdout, stderr = process.communicate()
+print("------ stdout ------")
+print(stdout)   
+print("------ stderr ------")       
+print(stderr)                                      
+
+# %%
