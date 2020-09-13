@@ -86,3 +86,19 @@ def lengthDistribution(file_path):
 file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100"
 lengthDistribution(file)
 # %%
+# lenghtDistribution For github
+def lengthDistribution(file_path):
+    head, tail = os.path.split(file_path) 
+    lengths = map(len, SeqIO.parse(file_path, 'fasta'))
+    fig = plt.figure()
+    ax = fig.gca()
+    pandas.Series(lengths).hist(color='blue', bins=200, ax=ax)
+    plt.ylabel('Num of Seq with this length ')
+    plt.xlabel('Length of Seq')
+    plt.title(tail)
+    save_file_path = os.path.join(root_img_path, tail)
+    plt.savefig(save_file_path+'.github.png')
+
+file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100"
+lengthDistribution(file)
+# %%

@@ -14,12 +14,15 @@ EnzyBase  Database of enzybiotics (lysins, autolysins, lysozymes, and large bact
 EROP-Moscow The EROP-Moscow oligopeptide database
 BACTIBASE : Database Dedicated to Bacteriocin (Filter by antimicrobial keyword  )
 DRAMP 2.0, an updated data repository of antimicrobial peptides
+AVPpred: collection and prediction of highly effective antiviral peptides. 
+PeptideDB database assembles all naturally occurring signalling peptides from animal source
+dbAMPv1.4, an integrated resource for exploring antimicrobial peptides
 """
 # %%
 import pandas as pd
 import os 
 
-root_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/AMPs"
+root_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/"
 root_output_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/fasta"
 
 
@@ -45,6 +48,7 @@ def converterForDRAMP(filename):
     out_path = os.path.join(root_output_path, filename+".fasta")
     # Load File
     df = pd.read_excel(input_path, header=[0])
+    print("size:"+ str(len(df.index)))
     df = groupDRAMPDuplication(df)
     with open(out_path, 'w') as file:
         for index, row in df.iterrows():
@@ -500,6 +504,92 @@ with open(input_path, mode='r') as in_file, \
 print("--- End of erop ----")
 
 
+# %% 
+# AVPPred 
+print("--- AVPPred ----")
+
+filename = "AVPPred"
+input_path = os.path.join(root_path, filename+".tsv")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+df = pd.read_csv(input_path, header=0, usecols=['AVP_ID', 'Sequence'], comment='#', sep="\t")
+# trim white space 
+df['Sequence'] = df['Sequence'].str.strip()
+# remove empty value / Not protein symbol
+df = df.dropna()
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['AVP_ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        header = createID(row['AVP_ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(row['Sequence'] + '\n')
+print("--- End of AVPPred ----")
+
+# %% PeptideDB
+print("--- peptideDB.anti ----")
+
+filename = "peptideDB.anti"
+
+counter=0
+input_path = os.path.join(root_path, filename+".FASTA")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.DataFrame(columns=['ID','Sequence'])
+
+with open(input_path, mode='r') as in_file:
+    for line in in_file:
+        if line in ['\n', '\r\n', ""]:
+            continue
+        ID = str(counter)+"_"+filename
+        counter+=1
+        new_row = {'ID':ID, 'Sequence':line}
+        df = df.append(new_row, ignore_index=True)
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Sequence']
+
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq )
+
+print("--- End of peptideDB.anti ----")
+
+
+# %%
+# dbAMPv1.4_validated
+# lower case?
+print("--- dbAMPv1.4_validated ----")
+filename = "dbAMPv1.4_validated"
+input_path = os.path.join(root_path, filename+".FASTA")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(input_path, mode='r') as in_file, \
+     open(out_path, mode='w') as out_file:
+    for line in in_file:
+        if line.startswith(">"): # skip lines that start with > 
+            out_file.write(line.strip()+ '\n')
+            continue
+        line = line.upper()
+        out_file.write(line)
+
+print("--- End of dbAMPv1.4_validated ----")
+
 
 # %%
 # Merge all
@@ -526,6 +616,7 @@ records.sort(key=lambda r: -len(r))
 SeqIO.write(records, output_fasta_file, "fasta")
 print("------ Sorting completed ------")
 
+
 # %%
 # Run clustering 
 from subprocess import Popen, PIPE
@@ -541,5 +632,6 @@ print("------ stdout ------")
 print(stdout)   
 print("------ stderr ------")       
 print(stderr)                                      
+
 
 # %%

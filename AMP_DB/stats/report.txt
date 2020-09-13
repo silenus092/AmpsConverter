@@ -677,3 +677,34 @@ B: 20, (0.00%)
 Z: 41, (0.00%)
 U: 6, (0.00%)
 --------- End of NR100 cluster --------- 
+-----------------------------------------------------
+Total 13728 overlap 
+--- DRAMP ----
+DRAMP_Antibacterial_amps
+size:3287
+DRAMP_Anticancer_amps
+size:78
+DRAMP_Antifungal_amps
+size:1553
+DRAMP_Anti-Gram-_amps
+size:1720
+DRAMP_Anti-Gram+_amps
+size:1917
+DRAMP_Antimicrobial_amps
+size:4789
+DRAMP_Antiparasitic_amps
+size:44
+DRAMP_Antiprotozoal_amps
+size:17
+DRAMP_Antitumor_amps
+size:11
+DRAMP_Antiviral_amps
+size:214
+DRAMP_Insecticidal_amps
+size:98
+--- End of DRAMP ----
+
+After trasformation
+1875+1684+3233+78+1548+4728+44+17+11+98+213
+13529 count nonoverlap 
+

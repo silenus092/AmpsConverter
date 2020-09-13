@@ -1,5 +1,5 @@
 # AMPsConverter
-Tools for fasta conversion that supports the following AMP Databases
+Tools for fasta conversion that supports the following AMP Databases 
 1. DBAASP Database of Antimicrobial Activity and Structure of Peptides
 2. AVPdb | database of experimentally validated antiviral peptides
 3. HIPdb | A Database of Experimentally Validated HIV Inhibiting Peptide
@@ -15,8 +15,11 @@ Tools for fasta conversion that supports the following AMP Databases
 13. EROP-Moscow The EROP-Moscow oligopeptide database
 14. BACTIBASE : Database Dedicated to Bacteriocin (Filter by antimicrobial keyword  )
 15. DRAMP 2.0, an updated data repository of antimicrobial peptides
+16. AVPpred: collection and prediction of highly effective antiviral peptides. 
+17. PeptideDB database assembles all naturally occurring signalling peptides from animal source
+18. dbAMPv1.4, an integrated resource for exploring antimicrobial peptides
 
-# Collecting and Fitlering
+## Collecting and Fitlering
 Strategies:
 1. Convert lower case to upper case
 2. Remove white space between seqeunce or beginning and ending (e.g. "VEWNEMT WMEWEREI ENYTKLIYKILEESQEQ" to "VEWNEMTWMEWEREIENYTKLIYKILEESQEQ")
@@ -24,13 +27,9 @@ Strategies:
 4. Remove none protien seqeunce charater or unrelated words  (e.g. "+FRPKFGK-" or "structure given" or "NOT AVAILABLE")
 5. Remove unsure sequence. (e.g. "fCYwO-CyLeu-Pen-TKKr" or "βAlaFTicO")
 
-## **DBAASP**
+# Databases (Versions: Sep 01.2020)
 
-### <u>How To download original source</u>
-1. Visit https://dbaasp.org/search
-2. Click "Download CSV" at the bottom of page
-
-### <u>How To convert originial source to FASTA format</u>
+Global variable and function
 ```python
 root_path = "/mnt/c/works/RKI/AMP_DB/AMPs"
 root_output_path = "/mnt/c/works/RKI/AMP_DB/fasta"
@@ -42,6 +41,15 @@ def createID(ID, source, seq_type=None, description=None):
     if description is not None:
         header = header + "|" + description
     return header 
+```
+## **DBAASP**
+
+### <u>How To download original source</u>
+1. Visit https://dbaasp.org/search
+2. Click "Download CSV" at the bottom of page
+
+### <u>How To convert originial source to FASTA format</u>
+```python
 
 print("--- dbaasp_peptides ----")
 filename = "dbaasp_peptides"
@@ -70,8 +78,8 @@ with open(out_path, 'w') as file:
 
 print("--- End of dbaasp_peptides ----")
 ```
-Note:
- 1. lower case?
+Note for original resource:
+ 1. lower case
 
 
 ## **AVPdb**
@@ -137,7 +145,7 @@ with open(out_path, 'w') as file:
         file.write(seq + '\n')
 print("--- End of HIPdb_data ----")
 ```
-Note:
+Note for original resource:
  1. file input format (utf-8, utf-16)
 
 
@@ -148,6 +156,7 @@ Note:
 
 ### <u>How To convert originial source to FASTA format</u>
 ```python
+
 print("--- Hemolytik_allsequences ----")
 filename = "Hemolytik_allsequences_02_09_2020"
 input_path = os.path.join(root_path, filename+".txt")
@@ -156,6 +165,9 @@ out_path = os.path.join(root_output_path, filename+".fasta")
 df = pd.read_csv(input_path, header=[0], sep='\t', encoding='utf8' )
 # create new ID
 df['ID'] = df['ID'].apply(lambda row: str(row)+"_Hemolytik_allsequences")
+
+searchfor = ["β", "[", "]","(" , ")", "/", "-", "Ψ","Δ",
+ "1","2","3","4","5","6","7","8","9","0"] 
 
 # Group duplication
 df['ID'] = df['ID'].astype(str)
@@ -166,10 +178,21 @@ grouped_lists = grouped_lists.reset_index()
 print(filename)
 with open(out_path, 'w') as file:
     for index, row in grouped_lists.iterrows():
+        seq = row['SEQ']
+        if any(x in seq for x in searchfor):
+            print("special:"+seq)
+            continue
+        if any(c.islower() for c in seq):
+            seq = seq.upper()
+            # print("Upper:"+seq)
+
+        if " " in seq:
+            print("Found whitespace:"+seq)
+            seq = seq.replace(" ", "")
         header = createID(row['ID'], filename)
         # print(header)
         file.write(header + '\n')
-        seq = row['SEQ']
+        
         # print(seq)
         file.write(seq + '\n')
 
@@ -337,11 +360,8 @@ def groupCancerPPDDuplication(df):
     return grouped_lists
 
 file_names=["CancerPPD_d_natural",
-            "CancerPPD_d_non-natural",
             "CancerPPD_l_natural",
-            "CancerPPD_l_non-natural",
             "CancerPPD_mix_natural",
-            #"CancerPPD_mix_non-natural"
             ]
 
 print("--- CancerPPD ----")
@@ -406,7 +426,23 @@ wget http://aps.unmc.edu/AP/APD3_update2020_release.fasta
 ```
 
 ### <u>How To convert originial source to FASTA format</u>
-1. It already offers FASTA format
+```python
+print("--- APD3_update2020_release ----")
+filename = "APD3_update2020_release"
+input_path = os.path.join(root_path, filename+".fasta")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(input_path, mode='r') as in_file, \
+     open(out_path, mode='w') as out_file:
+    for line in in_file:
+        if line.startswith(">"): # skip lines that start with > 
+            out_file.write(line)
+            continue
+        removedWhite_line = line.strip() # strip whitespace
+        out_file.write(removedWhite_line + '\n')
+
+print("--- End of APD3_update2020_release ----")
+```
 
 ## **EROP-Moscow**
 
@@ -421,7 +457,39 @@ http://erop.inbi.ras.ru/result1.php?EROP_NMB_K=&PEP_NAME_K=&FAM_NAME_K=&ALL_KAR_
 ```
 
 ### <u>How To convert originial source to FASTA format</u>
-1. It already offers FASTA format
+```python
+# erop
+# +: to denote +H2, which is the open N-terminus
+# b: for an acetyl residue or other chemical group at the N-terminus
+# -: to denote O-, which is the open C-terminus
+# z: for an amide bond at the C-terminus
+# J: to denote the pyroglutaminyl linkage, formed by an N-terminal glutamine, due to side-chain reaction with the terminal amine residue
+# U: for the (occasional) aminoisobutyric acid residue.
+#
+print("--- erop ----")
+filename = "erop"
+input_path = os.path.join(root_path, filename+".FASTA")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(input_path, mode='r') as in_file, \
+     open(out_path, mode='w') as out_file:
+    for line in in_file:
+        if line.startswith(">"): # skip lines that start with > 
+            out_file.write(line.strip()+ '\n')
+            continue
+
+        line = line.replace("+", "")
+        line = line.replace("-", "")
+        line = line.replace("b", "")
+        line = line.replace("z", "")
+        if " " in line:
+            line = line.replace(" ", "")
+        out_file.write(line)
+
+print("--- End of erop ----")
+```
+Note:
+1. special character?
 
 ## **LAMP2**
 
@@ -429,7 +497,28 @@ http://erop.inbi.ras.ru/result1.php?EROP_NMB_K=&PEP_NAME_K=&FAM_NAME_K=&ALL_KAR_
 1. Download from http://biotechlab.fudan.edu.cn/database/lamp/db/lamp2.fasta
 
 ### <u>How To convert originial source to FASTA format</u>
-1. It already offers FASTA format
+```python
+print("--- LAMP2 ----")
+filename = "LAMP2"
+input_path = os.path.join(root_path, filename+".FASTA")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(input_path, mode='r') as in_file, \
+     open(out_path, mode='w') as out_file:
+    for line in in_file:
+        if line.startswith(">"): # skip lines that start with > 
+            out_file.write(line.strip()+ '\n')
+            continue
+        if " " in line:
+            line = line.replace(" ", "")
+        line = line.upper()
+        out_file.write(line)
+    out_file.write("\n")
+
+print("--- End of LAMP2 ----")
+```
+Note:
+1. lower case?
 
 ## **BACTIBASE**
 
@@ -447,7 +536,24 @@ http://erop.inbi.ras.ru/result1.php?EROP_NMB_K=&PEP_NAME_K=&FAM_NAME_K=&ALL_KAR_
 1. Downlaod from http://biotechlab.fudan.edu.cn/database/enzybase/db/enzy2.fasta
 
 ### <u>How To convert originial source to FASTA format</u>
-1. It already offers FASTA format
+```python
+print("--- enzy2 ----")
+from Bio import *
+
+filename = "enzy2"
+input_path = os.path.join(root_path, filename+".fasta")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(out_path, 'w') as f_out:
+    for seq_record in SeqIO.parse(open(input_path, mode='r'), 'fasta'):
+        if "-" in  seq_record.seq:
+            print('SequenceID = '  + seq_record.id)
+            continue
+        r=SeqIO.write(seq_record, f_out, 'fasta')
+        if r!=1: print('Error while writing sequence:  ' + seq_record.id)
+
+print("--- End of enzy2 ----")
+```
 
 ## **DRAMP (2.0)**
 
@@ -457,6 +563,37 @@ http://erop.inbi.ras.ru/result1.php?EROP_NMB_K=&PEP_NAME_K=&FAM_NAME_K=&ALL_KAR_
 
 ### <u>How To convert originial source to FASTA format</u>
 ```python
+ef converterForDRAMP(filename):
+    input_path = os.path.join(root_path, filename+".xlsx")
+    out_path = os.path.join(root_output_path, filename+".fasta")
+    # Load File
+    df = pd.read_excel(input_path, header=[0])
+    print("size:"+ str(len(df.index)))
+    df = groupDRAMPDuplication(df)
+    with open(out_path, 'w') as file:
+        for index, row in df.iterrows():
+            if "unknown" in  row['Sequence'].lower():
+                continue
+            if  "-spacer-" in  row['Sequence']:
+                continue
+            header = createID(row['DRAMP_ID'], filename)
+            #print(header)
+            file.write(header + '\n')
+            seq = row['Sequence'] 
+            if " " in seq:
+                #print("Found whitespace:"+seq)
+                seq = seq.replace(" ", "")
+            if "-" in seq:
+                print("Found '-':"+seq)
+            file.write(seq + '\n')
+
+def groupDRAMPDuplication(df):
+    df['DRAMP_ID'] = df['DRAMP_ID'].astype(str)
+    grouped_df = df.groupby("Sequence")
+    grouped_lists = grouped_df["DRAMP_ID"].agg(lambda column: ",".join(column))
+    grouped_lists = grouped_lists.reset_index()
+    return grouped_lists
+
 file_names=["DRAMP_Antibacterial_amps",
             "DRAMP_Anticancer_amps",
             "DRAMP_Antifungal_amps",
@@ -470,29 +607,6 @@ file_names=["DRAMP_Antibacterial_amps",
             "DRAMP_Insecticidal_amps",
             ]
 
-# DRAMP
-def converterForDRAMP(filename):
-    input_path = os.path.join(root_path, filename+".xlsx")
-    out_path = os.path.join(root_output_path, filename+".fasta")
-    # Load File
-    df = pd.read_excel(input_path, header=[0])
-    df = groupDRAMPDuplication(df)
-    with open(out_path, 'w') as file:
-        for index, row in df.iterrows():
-            header = createID(row['DRAMP_ID'], filename)
-            #print(header)
-            file.write(header + '\n')
-            seq = row['Sequence']
-            #print(seq)
-            file.write(seq + '\n')
-
-def groupDRAMPDuplication(df):
-    df['DRAMP_ID'] = df['DRAMP_ID'].astype(str)
-    grouped_df = df.groupby("Sequence")
-    grouped_lists = grouped_df["DRAMP_ID"].agg(lambda column: ",".join(column))
-    grouped_lists = grouped_lists.reset_index()
-    return grouped_lists
-
 print("--- DRAMP ----")
 
 for file_name in file_names:
@@ -501,3 +615,128 @@ for file_name in file_names:
 
 print("--- End of DRAMP ----")
 ```
+
+
+## AVPpred
+
+### <u>How To</u>
+1. Vist the http://dramp.cpu-bioinfor.org/downloads/
+2. Click download link
+3. Fix header (e.g. "AVP ID" change to "AVP_ID") 
+4. some sequences may splited into serveral lines (5-6 sequences), manully fix them.  
+
+### <u>How To convert originial source to FASTA format</u>
+```python
+print("--- AVPPred ----")
+
+filename = "AVPPred"
+input_path = os.path.join(root_path, filename+".tsv")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+df = pd.read_csv(input_path, header=0, usecols=['AVP_ID', 'Sequence'], comment='#', sep="\t")
+# trim white space 
+df['Sequence'] = df['Sequence'].str.strip()
+# remove empty value / Not protein symbol
+df = df.dropna()
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['AVP_ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        header = createID(row['AVP_ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(row['Sequence'] + '\n')
+print("--- End of AVPPred ----")
+```
+
+## PeptideDB
+
+### <u>How To</u>
+1. Visit http://www.peptides.be/index.php?p=search&accession_number=&name=&organism_group=&organism_species=&length_from=&length_to=&mass_from=&mass_to=&family_group=Antimicrobial+peptides&family=&uniprot=&aminoacid=
+2. Then click "Peptides in FASTA"
+
+### <u>How To convert originial source to FASTA format</u>
+```python
+print("--- peptideDB.anti ----")
+
+filename = "peptideDB.anti"
+
+counter=0
+input_path = os.path.join(root_path, filename+".FASTA")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.DataFrame(columns=['ID','Sequence'])
+
+with open(input_path, mode='r') as in_file:
+    for line in in_file:
+        if line in ['\n', '\r\n', ""]:
+            continue
+        ID = str(counter)+"_"+filename
+        counter+=1
+        new_row = {'ID':ID, 'Sequence':line}
+        df = df.append(new_row, ignore_index=True)
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Sequence']
+
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq )
+
+print("--- End of peptideDB.anti ----")
+
+```
+
+## dbAMPv1.4
+
+### <u>How To</u>
+1. Visit http://140.138.77.240/~dbamp/download.php
+2. Click download under "Download All Antimicrobial peptides Sequence Data" panel
+
+### <u>How To convert originial source to FASTA format</u>
+```python
+print("--- dbAMPv1.4_validated ----")
+filename = "dbAMPv1.4_validated"
+input_path = os.path.join(root_path, filename+".FASTA")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+with open(input_path, mode='r') as in_file, \
+     open(out_path, mode='w') as out_file:
+    for line in in_file:
+        if line.startswith(">"): # skip lines that start with > 
+            out_file.write(line.strip()+ '\n')
+            continue
+        line = line.upper()
+        out_file.write(line)
+
+print("--- End of dbAMPv1.4_validated ----")
+```
+
+
+# Clustering
+We use [CD-HIT](https://github.com/weizhongli/cdhit/wiki) for clustering sequences to reduce sequence redundancy
+```bash
+./cd-hit -i /mnt/c/works/RKI/AMPsConverter/AMP_DB/one_fasta_file.sorted.fasta -o /mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100 -c 1  
+
+grep ">" /mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100 | wc -l 
+```
+
+# Statistics
+Report basic statistics , please see `statistics.py`
+1. Report amino acid character in file
+2. Report lenght distribution
+3. Save a graph report in PNG format.
