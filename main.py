@@ -17,12 +17,16 @@ DRAMP 2.0, an updated data repository of antimicrobial peptides
 AVPpred: collection and prediction of highly effective antiviral peptides. 
 PeptideDB database assembles all naturally occurring signalling peptides from animal source
 dbAMPv1.4, an integrated resource for exploring antimicrobial peptides
+inverpred
+Antifp
+ADAM
+AntiTbPred
 """
 # %%
 import pandas as pd
 import os 
 
-root_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/"
+root_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/AMPs"
 root_output_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/fasta"
 
 
@@ -33,10 +37,6 @@ def createID(ID, source, seq_type=None, description=None):
     if description is not None:
         header = header + "|" + description
     return header 
-
-# symbolToCheck = ["A","B"""]
-
-
 
 # %%
 # DRAMP
@@ -141,7 +141,6 @@ for file_name in file_names:
     converterForCancerPPD(file_name)
 
 print("--- End of CancerPPD ----")
-
 
 # %%
 # AVPdb_data
@@ -570,7 +569,6 @@ with open(out_path, 'w') as file:
 
 print("--- End of peptideDB.anti ----")
 
-
 # %%
 # dbAMPv1.4_validated
 # lower case?
@@ -590,7 +588,115 @@ with open(input_path, mode='r') as in_file, \
 
 print("--- End of dbAMPv1.4_validated ----")
 
+# %% inverpred
+print("--- inverpred  ----")
 
+filename = "inverpred"
+input_path = os.path.join(root_path, filename+".txt")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.read_csv(input_path, header=0, sep="\t")
+# create new ID
+df['ID'] = df.index
+df['ID'] = df['ID'].apply(lambda row: str(row)+"_"+filename)
+
+# Group duplication
+grouped_df = df.groupby('Secuencia')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Secuencia']
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq + '\n' )
+
+print("--- End of inverpredd ----")
+
+
+# %%
+# Antifp
+print("--- Antifp pos_train_ds3  ----")
+
+filename = "pos_train_ds3"
+input_path = os.path.join(root_path, filename+".txt")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.read_csv(input_path, header=0, sep="\t")
+# create new ID
+df['ID'] = df.index
+df['ID'] = df['ID'].apply(lambda row: str(row)+"_"+filename)
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Sequence']
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq + '\n' )
+print("--- End of Antifp pos_train_ds3 ----")
+# %%
+# ADAM
+print("---  ADAM  ----")
+
+filename = "adam_test"
+input_path = os.path.join(root_path, filename+".txt")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.read_csv(input_path, header=0, sep="\t")
+
+"""# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Sequence']
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq + '\n' )
+print("--- End of ADAM ----")
+"""
+
+# %%
+# AntiTbPred
+print("--- antitbpred  ----")
+
+filename = "antitbpred"
+input_path = os.path.join(root_path, filename+".txt")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.read_csv(input_path, header=0, sep="\t")
+# create new ID
+df['ID'] = df.index
+df['ID'] = df['ID'].apply(lambda row: str(row)+"_"+filename)
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Sequence']
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq + '\n' )
+print("--- End of antitbpred ----")
+
+
+###########################  Final steps ##########################################
 # %%
 # Merge all
 
@@ -632,6 +738,5 @@ print("------ stdout ------")
 print(stdout)   
 print("------ stderr ------")       
 print(stderr)                                      
-
 
 # %%
