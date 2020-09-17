@@ -4,23 +4,23 @@ AVPdb | database of experimentally validated antiviral peptides
 HIPdb | A Database of Experimentally Validated HIV Inhibiting Peptide
 Hemolytik Database of Hemolytic activity of AMPs.
 BaAMPs | Biofilm-active AMPs database: antimicrobial peptides (AMPs) specifically tested against microbial biofilms.
-MilkAMP A database for milk AMPs (a comprehensive database of antimicrobial peptides of dairy origin)
-DADP: Database of Anuran Defense Peptides
+MilkAMP | A database for milk AMPs (a comprehensive database of antimicrobial peptides of dairy origin)
+DADP | Database of Anuran Defense Peptides
 CancerPPD Database of Anticancer peptides and proteins
-AntiCP Consists of 225 antimicrobial peptides with anticancer properties.
-LAMP2: An update to LAMP database linking antimicrobial peptide.
+AntiCP| Consists of 225 antimicrobial peptides with anticancer properties.
+LAMP2 | An update to LAMP database linking antimicrobial peptide.
 Antimicrobial Peptide Database (APD3, http://aps.unmc.edu/AP/main.php)
-EnzyBase  Database of enzybiotics (lysins, autolysins, lysozymes, and large bacteriocins) (Not sure)
-EROP-Moscow The EROP-Moscow oligopeptide database
-BACTIBASE : Database Dedicated to Bacteriocin (Filter by antimicrobial keyword  )
-DRAMP 2.0, an updated data repository of antimicrobial peptides
-AVPpred: collection and prediction of highly effective antiviral peptides. 
-PeptideDB database assembles all naturally occurring signalling peptides from animal source
+EnzyBase  | Database of enzybiotics (lysins, autolysins, lysozymes, and large bacteriocins) (Not sure)
+EROP-Moscow | The EROP-Moscow oligopeptide database
+BACTIBASE | Database Dedicated to Bacteriocin (Filter by antimicrobial keyword  )
+DRAMP 2.0, | an updated data repository of antimicrobial peptides
+AVPpred: | collection and prediction of highly effective antiviral peptides. 
+PeptideDB | database assembles all naturally occurring signalling peptides from animal source
 dbAMPv1.4, an integrated resource for exploring antimicrobial peptides
-inverpred
-Antifp
-ADAM
-AntiTbPred
+Inverpred | is a specialized database of AMPs from invertebrates.
+Antifp | is an in silico method, which is developed to predict and design antifungal peptides
+ADAM | A Database of Anti-Microbial peptides
+AntiTbPred | Prediction of antitubercular peptides
 """
 # %%
 import pandas as pd
@@ -651,7 +651,7 @@ input_path = os.path.join(root_path, filename+".txt")
 out_path = os.path.join(root_output_path, filename+".fasta")
 df = pd.read_csv(input_path, header=0, sep="\t")
 
-"""# Group duplication
+# Group duplication
 grouped_df = df.groupby('Sequence')
 grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
 grouped_lists = grouped_lists.reset_index()
@@ -666,8 +666,9 @@ with open(out_path, 'w') as file:
         # print(seq)
         file.write(seq + '\n' )
 print("--- End of ADAM ----")
-"""
 
+## df[~df["ID"].str.contains("ADAM")]
+## df[~df["Sequence"].str.contains("(")]
 # %%
 # AntiTbPred
 print("--- antitbpred  ----")
