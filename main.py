@@ -590,7 +590,6 @@ print("--- End of dbAMPv1.4_validated ----")
 
 # %% inverpred
 print("--- inverpred  ----")
-
 filename = "inverpred"
 input_path = os.path.join(root_path, filename+".txt")
 out_path = os.path.join(root_output_path, filename+".fasta")
@@ -612,7 +611,6 @@ with open(out_path, 'w') as file:
         file.write(header + '\n')
         # print(seq)
         file.write(seq + '\n' )
-
 print("--- End of inverpredd ----")
 
 

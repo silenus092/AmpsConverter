@@ -18,6 +18,10 @@ Tools for fasta conversion that supports the following AMP Databases
 16. AVPpred: collection and prediction of highly effective antiviral peptides. 
 17. PeptideDB database assembles all naturally occurring signalling peptides from animal source
 18. dbAMPv1.4, an integrated resource for exploring antimicrobial peptides
+19. Inverpred | is a specialized database of AMPs from invertebrates.
+20. Antifp | is an in silico method, which is developed to predict and design antifungal peptides
+21. ADAM | A Database of Anti-Microbial peptides
+22. AntiTbPred | Prediction of antitubercular peptides
 
 ## Collecting and Fitlering
 Strategies:
@@ -724,6 +728,136 @@ with open(input_path, mode='r') as in_file, \
         out_file.write(line)
 
 print("--- End of dbAMPv1.4_validated ----")
+```
+## Inverpred 
+
+### <u>How To</u>
+1. Get the original source via Email.
+2. Manully extract records and save into .txt format 
+
+### <u>How To convert originial source to FASTA format</u>
+```python
+print("--- inverpred  ----")
+filename = "inverpred"
+input_path = os.path.join(root_path, filename+".txt")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.read_csv(input_path, header=0, sep="\t")
+# create new ID
+df['ID'] = df.index
+df['ID'] = df['ID'].apply(lambda row: str(row)+"_"+filename)
+
+# Group duplication
+grouped_df = df.groupby('Secuencia')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Secuencia']
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq + '\n' )
+print("--- End of inverpredd ----")
+```
+
+## Antifp 
+### <u>How To</u>
+1. Visit https://webs.iiitd.edu.in/raghava/antifp/algo.php
+2. Donwload data from Antifp_Main selection (select only positive set)
+3. Merge from two sources manaully and save into .txt format
+
+### <u>How To convert originial source to FASTA format</u>
+```python
+print("--- Antifp pos_train_ds3  ----")
+
+filename = "pos_train_ds3"
+input_path = os.path.join(root_path, filename+".txt")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.read_csv(input_path, header=0, sep="\t")
+# create new ID
+df['ID'] = df.index
+df['ID'] = df['ID'].apply(lambda row: str(row)+"_"+filename)
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Sequence']
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq + '\n' )
+print("--- End of Antifp pos_train_ds3 ----")
+```
+## ADAM 
+### <u>How To</u>
+1. Visit http://bioinformatics.cs.ntou.edu.tw/adam/search_amp.html
+2. Click "show all" button
+3. Manually save record from the  result table into .txt and then fixs newline problem (scan through 7000 records, troublesome!!!)
+
+### <u>How To convert originial source to FASTA format</u>
+```python
+print("---  ADAM  ----")
+
+filename = "adam_test"
+input_path = os.path.join(root_path, filename+".txt")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.read_csv(input_path, header=0, sep="\t")
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Sequence']
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq + '\n' )
+print("--- End of ADAM ----")
+```
+
+## AntiTbPred
+### <u>How To</u>
+1. Visit https://webs.iiitd.edu.in/raghava/antitbpred/down.php
+2. Download only first row (Positive dataset)
+
+### <u>How To convert originial source to FASTA format</u>
+```python
+print("--- antitbpred  ----")
+
+filename = "antitbpred"
+input_path = os.path.join(root_path, filename+".txt")
+out_path = os.path.join(root_output_path, filename+".fasta")
+df = pd.read_csv(input_path, header=0, sep="\t")
+# create new ID
+df['ID'] = df.index
+df['ID'] = df['ID'].apply(lambda row: str(row)+"_"+filename)
+
+# Group duplication
+grouped_df = df.groupby('Sequence')
+grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        seq = row['Sequence']
+        header = createID(row['ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        # print(seq)
+        file.write(seq + '\n' )
+print("--- End of antitbpred ----")
 ```
 
 
