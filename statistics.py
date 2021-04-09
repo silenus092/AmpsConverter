@@ -83,7 +83,7 @@ def lengthDistribution(file_path):
     save_file_path = os.path.join(root_img_path, tail)
     plt.savefig(save_file_path+'.lenDis.png')
 
-file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100"
+file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/AMP.nr80.fasta.clstr"
 lengthDistribution(file)
 # %%
 # lenghtDistribution For github
@@ -99,6 +99,6 @@ def lengthDistribution(file_path):
     save_file_path = os.path.join(root_img_path, tail)
     plt.savefig(save_file_path+'.github.png')
 
-file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100"
+file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/AMP.nr90.fasta.clstr"
 lengthDistribution(file)
 # %%
