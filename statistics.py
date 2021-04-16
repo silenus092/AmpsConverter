@@ -101,4 +101,4 @@ def lengthDistribution(file_path):
 
 file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/AMP.nr90.fasta.clstr"
 lengthDistribution(file)
-# %%
+

@@ -1,0 +1,26 @@
+  Camp_ID	gi	UniProt_id	PDBID	Title	Source_Organism	Taxonomy	Seqence	Length	Pubmed_id	Activity	Gram_Nature	Validation
+CAMPSQ7	109894868	P84868		Sesquin	Vigna unguiculata subsp. sesquipedalis 	Viridiplantae	KTCENLADTY	10	15949629	Antibacterial, Antifungal, Antiviral	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ17	110287794	P84869		Antifungal lectin PVAP	Phaseolus vulgaris 	Viridiplantae	SNDIYFNFQR	10	16026901	Antifungal		Experimentally Validated
+CAMPSQ519	55583845	P84200		Gymnin	Gymnocladus chinensis 	Viridiplantae	KTCENLADDY	10	14499273	Antifungal,Antiviral		Experimentally Validated
+CAMPSQ593	71153693	P84528		Antimicrobial ribonuclease	Lentinus sajor-caju	Fungi	DNGEAGRAAR	10	15003351	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ749	110560642	A6MBP9		Odorranain-N1	Odorrana grahami	Animalia (Amphibians)	DEKGPKWKR	9	17272268	Antifungal		Experimentally Validated
+CAMPSQ771				Antifungal protein from coconut	Cocos nucifera	Viridiplantae	EQCREEEDDR	10	16308082	Antifungal,Antiviral		Experimentally Validated
+CAMPSQ938				Modified defensin	Synthetic construct		ALLLAIRKR	9	10561605	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ939				Modified defensin	Synthetic construct		AWLLAIRKR	9	10561605	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ940				Modified defensin	Synthetic construct		ALYLAIRKR	9	10561605	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ941				Modified defensin	Synthetic construct		ALWLAIRKR	9	10561605	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1050				Gramicidin S	Synthetic construct		VXLFPPFLXV	10	Reference: Bull. Chem. Soc. Jpn., 58, 1469-1472 (1985)	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1051				Gramicidin Analogue	Synthetic construct		VXLPFPFLXV	10	Reference: Bull. Chem. Soc. Jpn., 58, 1469-1472 (1985)	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1052				Gramicidin Analogue	Synthetic construct		VXLPFFPLXV	10	Reference: Bull. Chem. Soc. Jpn., 58, 1469-1472 (1985)	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ2920				Palustrin -2AR	Rana areolata	Animalia (Amphibians)	GFISTVKNLATNVAGTVIDTIKCKVTGGC	10	12429503	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ3516				  Cr-ACP1 	Cycas revoluta	Viridiplantae	AWKLFDDGV	9	21882228	Anticancer, Antibacterial		Experimentally Validated
+CAMPSQ3639				  Temporin-ALk 	Amolops loloensis	Animalia (Amphibians)	FFPIVGKLLS	10	19843479	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3832				  NRWC 	Bacillus subtilis ATCC 6633	Bacteria	NRWCFAGDD	9	23519163	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ3841				  HaA4	Harmonia axyridis	Animalia (Insects)	IGGYCSWLRL	10	23124352	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3842		C0HJB9		  Temporin-ECa  	Euphlyctis cyanophlyctis	Animalia (Amphibians)	FLPGLLAGLL	10		Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ4155	408407809	B3EWP8		Rondonin	Acanthoscurria rondoniae 	Animalia (Arachnids)	IIIQYEGHKH	10		Antifungal		Experimentally Validated
+CAMPSQ7535		P86977		Chitinase	Streptomyces violaceusniger	Bacteria	GDGTGPGPGP	10	22915152	Antifungal		Experimentally Validated
+CAMPSQ8165				Peptide Ctry2459 (H3)	Synthetic construct		FLHFLHHLF	9	23415044	Antiviral		Experimentally Validated
+CAMPSQ8166				Peptide Ctry2459 (H2)	Synthetic construct		FLGFLHHLF	9	23415044	Antiviral		Experimentally Validated
+CAMPSQ8167		P0DMF3		Peptide Ctry2459 (WT)	Chaerilus tryznai 	Animalia (Arachnids)	FLGFLKNLF	9	23415044	Antiviral		Experimentally Validated
+CAMPSQ8244				Cm-p1	Cenchritis muricatus	Animalia (Molluscs (Gastropoda))	SRSELIVHQR	10	25921828	Antifungal		Experimentally Validated

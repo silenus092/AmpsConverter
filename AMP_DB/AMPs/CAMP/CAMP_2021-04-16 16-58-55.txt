@@ -1,0 +1,26 @@
+  Camp_ID	gi	UniProt_id	PDBID	Title	Source_Organism	Taxonomy	Seqence	Length	Pubmed_id	Activity	Gram_Nature	Validation
+CAMPSQ647	88909166	P84759		Jellein-3 	Apis mellifera	Animalia (Insects)	EPFKISIHL	9	15203237	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ651	90109840	P84760		Alveolarin	Polyporus alveolaris 	Fungi	GVCDMADLA	9	15165727	Antifungal		Experimentally Validated
+CAMPSQ665	20138866	O18330		Jellein-1 	Apis mellifera	Animalia (Insects)	PFKISIHL	8	15203237	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ666	20138866	O18330		Jellein-2	Apis mellifera	Animalia (Insects)	TPFKISIHL	9	15203237	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ936	46395637	O96049		Defensin precursor	Oryctes rhinoceros	Animalia (Insects)	AHCLAIGRK	9	10561605	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ937				Modified defensin	Synthetic construct		ALRLAIRKR	9	10561605	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1939	88909608	P84711		Curvalicin-28c	Lactobacillus curvatus	Bacteria	NIPQLTPTP	9	16680519	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ2461	308191394	P86705		Antimicrobial peptide 1	Cocos nucifera	Viridiplantae	VAGRAQGM	8	19111587	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ2470	391738007	B3EWI7		Antifungal peptide	Cenchritis muricatus  	Animalia (Molluscs (Gastropoda))	RSELIVHQR	9	22210491	Antifungal		Experimentally Validated
+CAMPSQ2471	380876850	B3EWE7		Anticancerous peptide 1	Cycas revoluta  	Viridiplantae	WKLFDDGV	8	21882228	Antibacterial, Anticancer	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ2572	75570446	Q91826		PYLa/PGLa B	Xenopus laevis	Animalia (Amphibians)	IAKVALKAL	9	6688991	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ2640	295004058	D4YWD1		Temporin-SHf precursor, partial	Pelophylax saharicus	Animalia (Amphibians)	FFLSRIFGK	9	20308076	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ2985		P83375		  Serracin-P 43 kDa subunit 	Serratia plymuthica	Bacteria	DYHHGVRVL	9	12406768	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ3111				  Jelleine-II 	Apis mellifera	Animalia (Insects)	TPFKLSLHL	9	15203237	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3112				  Jelleine-III 	Apis mellifera	Animalia (Insects)	EPFKLSLHL	9	15203237	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3175				  Cn-AMP1 	Cocos nucifera	Viridiplantae	SVAGRAQGM	9	19111587	Antimicrobial		Experimentally Validated
+CAMPSQ3177				  Cn-AMP3 	Cocos nucifera	Viridiplantae	TCSYTMEA	8	19111587	Antimicrobial		Experimentally Validated
+CAMPSQ3186				  PL-101 	Styela plicata	Animalia (Ascidiacea)	FFHLHFHY	8	12569105	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3773				  Temporin-SHf	Pelophylax saharica	Animalia (Amphibians)	FFFLSRIF	8	20308076	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3928		B6ULW4		Theta defensin subunit A	Papio anubis 	Animalia (Mammals)	RCVCTRGFC	9		Antimicrobial		Experimentally Validated
+CAMPSQ3929		B6ULW5		Theta defensin subunit B	Papio anubis 	Animalia (Mammals)	RCVCRRGVC	9		Antimicrobial		Experimentally Validated
+CAMPSQ3930		B6ULW6		Theta defensin subunit C	Papio anubis 	Animalia (Mammals)	RCICLLGIC	9		Antimicrobial		Experimentally Validated
+CAMPSQ3931		B6ULW7		Theta defensin subunit D	Papio anubis 	Animalia (Mammals)	RCFCRRGVC	9		Antimicrobial		Experimentally Validated
+CAMPSQ3935		P86722		Theta defensin subunit A	Papio hamadryas 	Animalia (Mammals)	RCVCTRGFC	9	20155756	Antimicrobial		Experimentally Validated
+CAMPSQ3936		P86723		Theta defensin subunit B	Papio hamadryas 	Animalia (Mammals)	RCVCRRGVC	9	20155756	Antimicrobial		Experimentally Validated

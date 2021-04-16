@@ -1,0 +1,22 @@
+  Camp_ID	gi	UniProt_id	PDBID	Title	Source_Organism	Taxonomy	Seqence	Length	Pubmed_id	Activity	Gram_Nature	Validation
+CAMPSQ391	3913672	P81437		Formaecin-2	Myrmecia gulosa	Animalia (Insects)	GRPNPVNTKPTPYPRL	16	9497332	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ392	3913673	P81438		Formaecin-1	Myrmecia gulosa	Animalia (Insects)	GRPNPVNNKPTPHPRL	16	9497332	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ611	730587	P39084		Ranalexin 	Rana catesbeiana	Animalia (Amphibians)	LIKIVPAMICAVTKKC	16	8144672	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ627	7531070	P81835		Citropin-1.1 	Litoria citropa	Animalia (Amphibians)	GLFDVIKKVASVIGGL	16	10504394	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ628	7531073	P81840		Citropin-1.2 	Litoria citropa	Animalia (Amphibians)	GLFDIIKKVASVVGGL	16	10504394	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ629	7531076	P81846		Citropin-1.3	Litoria citropa	Animalia (Amphibians)	GLFDIIKKVASVIGGL	16	10504394	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ837	197239640	B5LUQ3, B5LUQ8		Fallaxidin 3.1	Litoria fallax	Animalia (Amphibians)	GLLDLAKHVIGIASKL	16	18803332	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ859	1730504	P32195		Protegrin-2	Sus scrofa	Animalia (Mammals)	RGGRLCYCRRRFCICV	16	8335113	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1946	18202395	P82240		Salmocidin-3	Oncorhynchus mykiss	Animalia (Pisces)	XXPQQLGHVKAAXSDY	16		Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ2459	317411785	P0CI89		Antimicrobial peptide 364	Lychas mucronatus	Animalia (Arachnids)	FGLIPSMMGGLVSAFK	16	20663230	Antibacterial		Experimentally Validated
+CAMPSQ2705		P82389		  Aurein 2.2 	Litoria aurea	Animalia (Amphibians)	GLFDIVKKVVGALGSL	16		Antimicrobial		Experimentally Validated
+CAMPSQ2706		P82391		  Aurein 2.4 	Litoria aurea	Animalia (Amphibians)	GLFDIVKKVVGTLAGL	16		Antimicrobial		Experimentally Validated
+CAMPSQ3441				  Bb-AMP4 	Bellamya bengalensis	Animalia (Molluscs (Gastropoda))	PSCVCSGFETSGIHFC	16	21262297	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ3444				  Astacidin 1 	Pacifastacus leniusculus	Animalia (Crustaceans (Malacostraca))	FKVQNQHGQVVKIFHH	16	12493771	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3470				  limnonectin-1Fa 	Limnonectes fujianensis	Animalia (Amphibians)	SFPFFPPGICKRLKRC	16	21396976	Antimicrobial	Gram-ve	Experimentally Validated
+CAMPSQ3471				  limnonectin-1Fb 	Limnonectes fujianensis	Animalia (Amphibians)	SFHVFPPWMCKSLKKC	16	21396976	Antimicrobial	Gram-ve	Experimentally Validated
+CAMPSQ3674				  Bmkn2 	Mesobuthus martensii	Animalia (Arachnids)	FIGAIARLLSKIFGKR	16	15062994	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3691				  Alyteserin-2Ma 	Alytes maurus	Animalia (Amphibians)	FIGKLISAASGLLSHL	16	22800568	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3696				  Alyteserin-2Mb 	Alytes maurus	Animalia (Amphibians)	ILGAIIPLVSGLLSHL	16	22800568	Antibacterial, Antifungal	Gram+ve	Experimentally Validated
+CAMPSQ3955		P83140		Antifungal protein 1 small subunit 	Malva parviflora 	Viridiplantae	PAGPFRIPPRXRXEFQ	16	11118343	Antifungal		Experimentally Validated
+CAMPSQ3958		P83142		Antifungal protein 2 small subunit 	Malva parviflora 	Viridiplantae	SDYSRKRDPPQKYEEE	16	11118343	Antifungal		Experimentally Validated

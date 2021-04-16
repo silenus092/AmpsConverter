@@ -1,0 +1,24 @@
+  Camp_ID	gi	UniProt_id	PDBID	Title	Source_Organism	Taxonomy	Seqence	Length	Pubmed_id	Activity	Gram_Nature	Validation
+CAMPSQ13	110279043	P0C1M6		Dominulin-A	Polistes dominulus	Animalia (Insects)	INWKKIAEVGGKILSSL	17	16446098	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ15	110279045	P0C1M7		Dominulin-B	Polistes dominulus	Animalia (Insects)	INWKKIAEIGKQVLSAL	17	16446098	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ230	20137310	P82390		Aurein-2.3	Litoria aurea	Animalia (Amphibians)	GLFDIVKKVVGAIGSL	16	10951191	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ232	20137313	P82393		Aurein-2.6	Litoria raniformis	Animalia (Amphibians)	GLFDIAKKVIGVIGSL	16	10951191	Antibacterial,Anticancer	Gram+ve	Experimentally Validated
+CAMPSQ714		A6MBS3		Odorranain-U1 antimicrobial peptide	Odorrana grahami	Animalia (Amphibians)	GCSRWIIGIHGQICRD	16	17272268	Antibacterial,Antifungal 	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ724	913450			Antimicrobial peptide , immobilized peptide E16LKL	Synthetic construct		KGLKKLLKLLKKLLKL	16	7726486	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ727	913447			Antimicrobial peptide , immobilized peptige E16KGL	Synthetic construct		LKLLKKLLKLLKKLGK	16	7726486	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1007				Temporin-1TGb	Rana tagoi 	Animalia (Amphibians)	AVDLAKIANKVLSSLF	16	16675060	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1232	1170962	P80411		Metalnikowin-3 	Palomena prasina	Animalia (Insects)	VDKPDYRPRPWPRPNM	16		Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ1233	1170961	P80410		Metalnikowin-2B 	Palomena prasina	Animalia (Insects)	VDKPDYRPRPWPRNMI	16		Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ2305	332310247	P86895		Putative antimicrobial peptide 1	Lippia sidoides  	Viridiplantae	ALYNSEDLYEETSDSDD	17	21210197	Antifungal		Experimentally Validated
+CAMPSQ2576	288561897	B5A9T1		Dybowskin-2CDYa	Rana dybowskii 	Animalia (Amphibians)	AVGRHGRRFGLRKHRKH	17	19539775	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3082			2RLG	  RP-1 	Synthetic construct		ALYKKFKKKLLKSLKRL	17	12435692	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ3392				  Pm_mastoparan PMM 	Polistes dorsalis	Animalia (Insects)	INWKKIASIGKEVLKAL	17	18375018	Antimicrobial		Experimentally Validated
+CAMPSQ3599				  Schmackerin-C1 	Odorrana schmackeri	Animalia (Amphibians)	AAPRGGKGFFCKLFKDC	17	22029824	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3611				  CPF-PG1 	Xenopus pygmaeus	Animalia (Amphibians)	GFGSLLGKALKIGTNLL	17	22123629	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3612				  CPF-L1 	Xenopus lenduensis	Animalia (Amphibians)	GIGSLLAKAAKLGANLL	17	22123629	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3613				  CPF-L2 	Xenopus lenduensis	Animalia (Amphibians)	GIGSALAKAAKLVAGIV	17	22123629	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3620				  Ranacyclin-B-AL1 	Amolops loloensis	Animalia (Amphibians)	AAFRGCWTKNYSPKPCL	17	21927839	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ3818		L0P323		Lantibiotic streptin, Senegalin 	Kassina senegalensis	Animalia (Amphibians)	FLPFLIPALTSLISSL	16	23430307	Antibacterial, Antifungal	Gram+ve	Experimentally Validated
+CAMPSQ3852		P84782		Napin-like polypeptide 	Brassica oleracea var. alboglabra 	Viridiplantae	PAQPFRIKKRQGPFERP	17	15485558	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ8202				Model amphipathic peptide (MAP)	Synthetic construct		KLALKALKALKAALKLA	17	23689723	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ8215				RN7-IN10	Synthetic construct		FLGGLIKWKWPWWPWRR	17	26046345	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated

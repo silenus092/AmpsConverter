@@ -1,0 +1,26 @@
+  Camp_ID	gi	UniProt_id	PDBID	Title	Source_Organism	Taxonomy	Seqence	Length	Pubmed_id	Activity	Gram_Nature	Validation
+CAMPSQ176	158705869	P0C5G7		Mastoparan-like peptide 12d	Vespa magnifica 	Animalia (Insects)	INLKAIAAMAKKLL	14	17046111	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1164	253723230	P80280	2DCX,2DD6	 K4-S4	Synthetic construct		ALWKTLLKKVLKAX	14	16407175	Antimicrobial		Experimentally Validated
+CAMPSQ1171				E14LKK / H14LKK	Synthetic construct		LKLLKKLLKLLKKL	14	7726486	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1174				E14KKL	Synthetic construct		LKKLLKKLKKLLKK	14	7726486	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1878	223635797	P0C8P9		Thiocillin GE37468	Streptomyces sp.	Bacteria	STNCFCYPCCSCSS	14		Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ2891				  Human histatin 9 	Homo sapiens	Animalia (Mammals)	RKFHEKHHSHRGYR	14	2303595	Antimicrobial		Experimentally Validated
+CAMPSQ2924				  Temporin 1HKa  	Rana heckscheri	Animalia (Amphibians)	SIFPAIVSFLSKFL	14	17005262	Antimicrobial		Experimentally Validated
+CAMPSQ3131				  MP-VB1 	Vespa bicolor	Animalia (Insects)	INMKASAAVAKKLL	14	18723059	Antimicrobial		Experimentally Validated
+CAMPSQ3140				  Temporin-1DRa 	Rana draytonii	Animalia (Amphibians)	HFLGTLVNLAKKIL	14	16307827	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3180				Temporin-LTb 	Hylarana latouchii	Animalia (Amphibians)	FIITGLVRGLTKLF	14	19022312	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ3247				  Japonicin-1CDYa 	Rana chensinensis	Animalia (Amphibians)	FFPLALLCKVFKKC	14	19179051	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3389				  Pd_mastoparan PDD-A 	Polistes dorsalis	Animalia (Insects)	INWKKIFEKVKNLV	14	18375018	Antimicrobial		Experimentally Validated
+CAMPSQ3390				  Pd_mastoparan PDD-B 	Polistes dorsalis	Animalia (Insects)	INWLKLGKKILGAL	14	18375018	Antimicrobial		Experimentally Validated
+CAMPSQ3391				  Mp_mastoparan MP 	Polistes dorsalis	Animalia (Insects)	INWLKLGKKMMSAL	14	18375018	Antimicrobial		Experimentally Validated
+CAMPSQ3393				  Polybia-MP-II 	Polybia paulista	Animalia (Insects)	IDWLKLGKMVIDAL	14	19463874	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3394				  Polybia-MP-III 	Polybia paulista	Animalia (Insects)	IDWLKLGKMVMDVL	14	19463874	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3400		D3VML5		  Plantazolicin 	Bacillus amyloliquefaciens FZB42	Bacteria	RCTCTTIISSSSTF	14	20971906, 21950656	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ3423	284022087	C7DT09		  OdVP3 	Orancistrocerus drewseni 	Animalia (Insects)	KDLHTVVSAILQAL	14	19857508	Antifungal		Experimentally Validated
+CAMPSQ3452				  Temporin-PRc 	Rana pretiosa	Animalia (Amphibians)	NFLDTLINLAKKFI	14	21295070	Antibacterial, Antifungal		Experimentally Validated
+CAMPSQ3487				  Peptide 8 	Rapana venosa	Animalia (Molluscs (Gastropoda))	APPPGYAMESDSFS	14	21703315	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ3660		E7EKD0		Temporin-HN1	Odorrana hainanensis	Animalia (Amphibians)	AILTTLANWARKFL	14	22450466	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3661		E7EKD4		Temporin-HN2 	Odorrana hainanensis	Animalia (Amphibians)	NILNTIINLAKKIL	14	22450466	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3943		P86147		Venom peptide 2-long 	Orancistrocerus drewseni 	Animalia (Insects)	EPILGIITSLLKSL	14	19857508, 18695936	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3947		P86146		Eumenine mastoparan-OD 	Orancistrocerus drewseni 	Animalia (Insects)	GRILSFIKGLAEHL	14	19857508,18695936	Antibacterial,Antifungal		Experimentally Validated
+CAMPSQ8243				Mastoparan analogue 9, 11, 12	Synthetic construct		INLKALAALAKKIL	14	26114811	Antibacterial		Experimentally Validated

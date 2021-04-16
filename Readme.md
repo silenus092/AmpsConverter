@@ -1,27 +1,36 @@
 # AMPsConverter
 Tools for fasta conversion that supports the following AMP Databases 
-1. DBAASP Database of Antimicrobial Activity and Structure of Peptides
-2. AVPdb | database of experimentally validated antiviral peptides
-3. HIPdb | A Database of Experimentally Validated HIV Inhibiting Peptide
-4. Hemolytik Database of Hemolytic activity of AMPs.
-5. BaAMPs | Biofilm-active AMPs database: antimicrobial peptides (AMPs) specifically tested against microbial biofilms.
-6. MilkAMP A database for milk AMPs (a comprehensive database of antimicrobial peptides of dairy origin)
-7. DADP: Database of Anuran Defense Peptides
-8. CancerPPD Database of Anticancer peptides and proteins
-9. AntiCP Consists of 225 antimicrobial peptides with anticancer properties.
-10. LAMP2: An update to LAMP database linking antimicrobial peptide.
-11. Antimicrobial Peptide Database (APD3, http://aps.unmc.edu/AP/main.php)
-12. EnzyBase  Database of enzybiotics (lysins, autolysins, lysozymes, and large bacteriocins) (Not sure)
-13. EROP-Moscow The EROP-Moscow oligopeptide database
-14. BACTIBASE : Database Dedicated to Bacteriocin (Filter by antimicrobial keyword  )
-15. DRAMP 2.0, an updated data repository of antimicrobial peptides
-16. AVPpred: collection and prediction of highly effective antiviral peptides. 
-17. PeptideDB database assembles all naturally occurring signalling peptides from animal source
-18. dbAMPv1.4, an integrated resource for exploring antimicrobial peptides
-19. Inverpred | is a specialized database of AMPs from invertebrates.
-20. Antifp | is an in silico method, which is developed to predict and design antifungal peptides
-21. ADAM | A Database of Anti-Microbial peptides
-22. AntiTbPred | Prediction of antitubercular peptides
+```
+AVPdb database of experimentally validated antiviral peptides
+HIPdb A Database of Experimentally Validated HIV Inhibiting Peptide
+AntiBP2 : Server for antibacterial peptide prediction
+DBAASP V.3 Database of Antimicrobial Activity and Structure of Peptides
+DADP: Database of Anuran Defense Peptides
+CancerPPD Database of Anticancer peptides and proteins
+AntiTbPred | Prediction of antitubercular peptides
+AntiCP Consists of 225 antimicrobial peptides with anticancer properties.
+Antifp | is an in silico method, which is developed to predict and design antifungal peptides
+ADAM | A Database of Anti-Microbial peptides
+Inverpred | is a specialized database of AMPs from invertebrates.
+PeptideDB database assembles all naturally occurring signalling peptides from animal source
+BACTIBASE : Database Dedicated to Bacteriocin (Filter by antimicrobial keyword )
+PeptideDB database assembles all naturally occurring signalling peptides from animal source
+Antimicrobial Peptide Database (APD3, https://wangapd3.com/downloads.php)
+MilkAMP A database for milk AMPs (a comprehensive database of antimicrobial peptides of dairy origin)
+BACTIBASE : Database Dedicated to Bacteriocin (Filter by antimicrobial keyword )
+AVPpred: collection and prediction of highly effective antiviral peptides.
+ADAPTABLE is both a webserver and data-miner of antimicrobial peptides. 
+BaAMPs | Biofilm-active AMPs database: antimicrobial peptides (AMPs) specifically tested against microbial biofilms.
+dbAMP v1.4, an integrated resource for exploring antimicrobial peptides
+DRAMP 2.0, an updated data repository of antimicrobial peptides
+Hemolytik Database of Hemolytic activity of AMPs. <-- เอา ID ของ  CP and toxix ออก
+EROP-Moscow The EROP-Moscow oligopeptide database
+EnzyBase Database of enzybiotics (lysins, autolysins, lysozymes, and large bacteriocins) (อันที่เป็น ช่องว่างในต่ำเเหน่งที่สองของ ID ถือว่าเป็น synthetic)
+AmPEP: Sequence-based prediction of antimicrobial 
+-----
+Not include:
+YADAMP: yet another database of antimicrobial peptides  
+```
 
 ## Collecting and Fitlering
 Strategies:
@@ -90,6 +99,7 @@ Note for original resource:
 
 ### <u>How To download original source</u>
 1. Visit http://crdd.osdd.net/servers/avpdb/download_data.php
+2. Select Natural peptides
 
 ### <u>How To convert originial source to FASTA format</u>
 ```python
@@ -624,7 +634,7 @@ print("--- End of DRAMP ----")
 ## AVPpred
 
 ### <u>How To</u>
-1. Vist the http://dramp.cpu-bioinfor.org/downloads/
+1. Vist http://crdd.osdd.net/servers/avppred/collection.php
 2. Click download link
 3. Fix header (e.g. "AVP ID" change to "AVP_ID") 
 4. some sequences may splited into serveral lines (5-6 sequences), manully fix them.  

@@ -1,0 +1,26 @@
+  Camp_ID	gi	UniProt_id	PDBID	Title	Source_Organism	Taxonomy	Seqence	Length	Pubmed_id	Activity	Gram_Nature	Validation
+CAMPSQ170	157872589		1D6X	Tritrpticin 	Sus scrofa	Animalia (Mammals)	VRRFPWWWPFLRR	13	8706838	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ429	41017609	P82821		Ranatuerin-6	Rana catesbeiana	Animalia (Amphibians)	FISAIASMLGKFL	13	9784389	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ430	41017610	P82822		Ranatuerin-7	Rana catesbeiana	Animalia (Amphibians)	FLSAIASMLGKFL	13	9784389	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ431	41017611	P82823		Ranatuerin-8	Rana catesbeiana	Animalia (Amphibians)	FISAIASFLGKFL	13	9784389	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ441	41018245	P82830		Temporin-1La	Rana luteiventris	Animalia (Amphibians)	VLPLISMALGKLL	13	10651828	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ444	41018248	P82848		Temporin-1P	Rana pipiens	Animalia (Amphibians)	FLPIVGKLLSGLL	13	10651828	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ445	41018249	P82880		Temporin-1Ca	 Rana clamitans (green frog)	Animalia (Amphibians)	FLPFLAKILTGVL	13	10822101	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ446	41018250	P82881		Temporin-1Cb	Rana clamitans	Animalia (Amphibians)	FLPLFASLIGKLL	13	10822101	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ447	41018251	P82882		Temporin-1Cc	Rana clamitans	Animalia (Amphibians)	FLPFLASLLTKVL	13	10822101	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ448	41018252	P82883		Temporin-1Cd	Rana clamitans	Animalia (Amphibians)	FLPFLASLLSKVL	13	10822101	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ449	41018253	P82884		Temporin-1Ce	Rana clamitans	Animalia (Amphibians)	FLPFLATLLSKVL	13	10822101	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ683				Temporin-1Od1	 Rana ornativentris 	Animalia (Amphibians)	FLPLLASLFSGLF	13	17147973, 11892844	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ686	74793383	Q6JQN2		BmKn2	Mesobuthus martensii	Animalia (Arachnids)	FIGAIARLLSKIF	13	15062994	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ707				OdG1	Odorrana grahami	Animalia (Amphibians)	FMPILSCSRFKRC	13	17272268	Antibacterial,Antifungal 	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ962	157878253	P33046	1HR1	Indolicidin Peptide Derivative With P-->a Substitution	Synthetic construct		ILAWKWAWWAWRX	13	11294848	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ967	159164534		2F3A	Ll-37-Derived Aurein 1.2 Analog 	Synthetic construct		RLFDKIRQVIRKF	13	16716252	Antibacterial,Anticancer		Experimentally Validated
+CAMPSQ3242				Temporin-LT1 	Hylarana latouchii	Animalia (Amphibians)	FLPGLIAGIAKML	13	19340924	Antimicrobial		Experimentally Validated
+CAMPSQ3246				  Temporin-1CEc 	Rana chensinensis	Animalia (Amphibians)	IIPLPLGYFAKKT	13	19179051	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3485				  Peptide 5 	Rapana venosa	Animalia (Molluscs (Gastropoda))	SPPSEQLGKSFNF	13	21703315	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ4014		B5L1B2		Pleurain-B1 antimicrobial peptide	Rana pleuraden 	Animalia (Amphibians)	FLGGLLASLLGKI	13	19028675	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ4015		B5L1A8		Pleurain-C1 antimicrobial peptide	Rana pleuraden 	Animalia (Amphibians)	YPELQQDLIARLL	13	19028675	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ4030	403399463	I0DEB3		Amphiphatic peptide CT1	Vaejovis mexicanus smithi 	Animalia (Arachnids)	FLGALWNVAKSVF	13	22342498	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ4031	403399464	I0DEB4		Amphiphatic peptide CT2	Vaejovis mexicanus smithi 	Animalia (Arachnids)	FLSTLWNAAKSIF	13	22342498	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ4033	430802816	L0GAZ8		Antimicrobial peptide CT5-NDBP-5.16 precursor 	Urodacus yaschenkoi	Animalia (Arachnids)	IWSAIWSGIKGLL	13	23182832	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ4035	430802814	L0GCI6		Antimicrobial peptide CT3-NDBP-5.15 precursor 	Urodacus yaschenkoi	Animalia (Arachnids)	ILSAIWSGIKSLF	13	23182832	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated

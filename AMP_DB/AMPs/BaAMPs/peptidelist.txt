@@ -1,0 +1,294 @@
+ID	Name	Sequence	Source	Size	Tags
+1	Pleurocidin	GWGSFFKKAA...	fish	25	
+2	LL-37	LLGDFFRKSK...	human	37	
+3	BMAP-27	GRFKRFRKKF...	cow	26	
+C-term amidation
+4	BMAP-28	GGLRSLGRKI...	cow	27	
+C-term amidation
+5	SMAP-29	RGLRRLGRKI...	sheep	28	
+C-term amidation
+6	KSL	KKVVFKVKFK	de novo	10	
+7	F2,5,12W	RWGRWLRKIR...	modified	15	
+8	LL-31	LLGDFFRKSK...	modified	31	
+9	LL7-31	RKSKEKIGKE...	modified	25	
+10	LL13-37	IGKEFKRIVQ...	modified	25	
+11	LL7-37	RKSKEKIGKE...	modified	31	
+12	LL-19	LLGDFFRKSK...	modified	19	
+13	LL-25	LLGDFFRKSK...	modified	25	
+14	LL-13	LLGDFFRKSK...	modified	13	
+15	LL13-31	IGKEFKRIVQ...	modified	19	
+16	LL7-25	RKSKEKIGKE...	modified	19	
+17	LL13-25	IGKEFKRIVQ...	modified	13	
+18	LL19-37	RIVQRIKDFL...	modified	19	
+19	KSL-W	KKVVFWVKFK	modified	10	
+20	KS-30	KSKEKIGKEF...	modified	30	
+21	KR-20	KRIVQRIKDF...	modified	20	
+22	KR-12	KRIVQRIKDF...	modified	12	
+23	beta-Defensin 3	GIINTLQKYY...	human	45	
+24	NRC-16	GWKKWLRKGA...	fish	19	
+C-term amidation
+25	Lactoferricin (17-30)	FKCRRWQWRM...	human	14	
+26	Lactoferrampin	WKLLSKAQEK...	human	17	
+27	MUC7 12-mer-L	RKSYKCLHKR...	modified	12	
+28	G10KHc	KKHRKHRKHR...	modified	36	
+29	MUC7 12-mer-L4	RKSYKALHKR...	modified	12	
+30	MUC7 20-mer	LAHQKPFIRK...	human	20	
+31	HSn5 12 mer	AKRHHGYKRK...	modified	12	
+32	Magainin-II	GIGKFLHSAK...	amphibian	23	
+33	Lys-a1	KIFGAIWPLA...	modified	19	
+34	AAP2	FHFFHHFFHF...	de novo	14	
+35	CSP	SGSLSTFFRL...	modified	21	
+36	CSPC16	TFFRLFNRSF...	modified	16	
+37	G2	KNLRIIRKGI...	modified	16	
+C-term amidation
+38	C16G2	TFFRLFNRSF...	modified	35	
+C-term amidation
+39	M8G2	TFFRLFNRGG...	modified	27	
+C-term amidation
+40	S6L3-33	FKKFWKWFRR...	modified	11	
+41	C16-33	TRRRLFNRSF...	modified	31	
+42	M8-33	TFFRLFNRSG...	modified	23	
+43	nisin	ITSISLCTPG...	bacteria	34	
+44	indolicidin	ILPWKWPWWP...	cow	13	
+45	Cecropin A (1-7)-Melittin	KWKLFKKIGA...	modified	15	
+46	HH15	KRFRIRVRVI...	modified	12	
+47	Bac2a	RLARIVVIRV...	modified	12	
+48	1026	VQWRIRVRVI...	modified	12	
+49	1029	KQFRIRVRV	modified	9	
+50	1036	VQFRIRVRIV...	modified	13	
+51	1037	KRFRIRVRV	modified	9	
+C-term amidation
+52	HH2	VQLRIRVAVI...	modified	12	
+53	1002 or L1002	VQRWLIVWRI...	modified	12	
+54	1003	IVWKIKRWWV...	modified	12	
+55	1004	RFWKVRVKYI...	modified	12	
+56	1008	RIKWIVRFR	modified	9	
+57	HH7	VRLRIRVAVR...	modified	12	
+58	1010	IRWRIRVWVR...	modified	12	
+59	1011	RRWVVWRIVQ...	modified	12	
+60	1012 or L1012	IFWRRIVIVK...	modified	12	
+C-term amidation
+61	1013	VRLRIRVA	modified	8	
+62	1016	LRIRWIFKR	modified	9	
+63	HH8	VRLRIRVAVI...	modified	12	
+64	1020	VRLRIRWWVL...	modified	12	
+65	HH10	KRFRIRVAVR...	modified	12	
+66	1035	KRWRWIVRNI...	modified	12	
+67	1031	WRWRVRVWR	modified	9	
+68	IMB-2	TFFRLFNRGG...	modified	25	
+73	Bac8c	RIWVIWRR	modified	8	
+74	PTP-7	FLGALFKALS...	modified	13	
+75	Holothurioidin 1	HLGHHALDHL...	other	12	
+76	Holothurioidin 2	ASHLGHHALD...	other	14	
+77	Esculentin-1a(1-21)	GIFSKLAGKK...	amphibian	21	
+78	Tn-AFP1	LMCTHPLDCS...	other	11	
+79	coprisin	VTCDVLSFEA...	insect	17	
+80	Histatin 5	DSHAKRHHGY...	human	24	
+81	Hst 5(4-15)-Spd	AKRHHGYKRK...	human	15	
+82	dF17-6K	KKKKKKAAFA...	de novo	17	
+C-term amidation
+83	dF21-10K	KKKKKKKKKK...	de novo	21	
+C-term amidation
+84	CWR11	CWFWKWWRRR...	de novo	12	
+C-term amidation
+85	Chrysophsin-1	FFGWLIKGAI...	fish	25	
+86	RK1	RWKRWWRRKK	de novo	10	
+87	RK2	RKKRWWRRKK	de novo	10	
+88	(IRIK) 2	IRIKIRIK	de novo	8	
+C-term amidation
+89	(IRVK) 3	IRVKIRVKIR...	de novo	12	
+C-term amidation
+90	PG-1	RGGRLCYCRR...	other	18	
+91	alpha-Defensin-3	DCYCRIPACI...	human	30	
+92	beta-Defensin-1	DHYNCVSSGG...	human	36	
+94	Magainin-I	GIGKFLHSAG...	amphibian	23	
+95	RIP	YSPWTNF	bacteria	7	
+C-term amidation
+96	K4-S4(1–13)a	ALWKTLLKKV...	modified	13	
+C-term amidation
+97	DD13-RIP	ALWKTLLKKV...	modified	20	
+C-term amidation
+98	Tachyplesin III	KWCFRVCYRG...	other	17	
+99	2C-4	RWRWRWF	modified	7	
+100	Sm6(L1)2C	FIKHFIHRFG...	modified	19	
+101	Sm6(L3)2C	FIKHFIHRFS...	modified	19	
+102	B-33	FKKFWKWFRR...	modified	11	
+103	Sm6(L1)B33	FIKHFIHRFG...	modified	23	
+104	PSN-1	FLSLIPHIVS...	other	19	
+C-term amidation
+105	NRC-16	GWKKWLRKGA...	other	19	
+C-term amidation
+106	GL13K	GKIIKLKASL...	modified	13	
+C-term amidation
+107	GK7	GQIINLK	modified	7	
+C-term amidation
+108	(RW)2-NH2	RWRW	modified	4	
+C-term amidation
+109	(RW)3-NH2	RWRWRW	modified	6	
+C-term amidation
+110	(RW)4-NH2	RWRWRWRW	modified	8	
+C-term amidation
+111	Lasio-III	VNWKKILGKI...	other	15	
+C-term amidation
+112	Melittin B	GIGAVLKVLT...	insect	26	
+113	Melimine	TLISWIKNKR...	de novo	29	
+114	Melimine CysN	CTLISWIKNK...	modified	30	
+115	Melimine CysC	TLISWIKNKR...	modified	30	
+116	Melimine Cys13	TLISWIKNKR...	modified	30	
+117	K4-S4(1-15)a	LWKTLLKKVL...	modified	14	
+C-term amidation
+118	beta6-20-G3K6	NEEGFFSARG...	modified	24	
+120	hepcidin 20	ICIFCCGCCH...	human	20	
+121	NA-CATH	KRFKKFFKKL...	other	34	
+122	NA-CATH-ATRA1-ATRA1	KRFKKFFKKL...	modified	34	
+123	Lactoferricin B (17-41)	FKCRRWQWRM...	cow	25	
+124	D-LL-37	LLGDFFRKSK...	de novo	37	
+125	Scrambled LL-37	GLKLRFEFSK...	de novo	37	
+126	Citropin 1.1	GLFDVIKKVA...	amphibian	16	
+127	R-FV-I16	RFRRLFRIRV...	de novo	16	
+128	FV7	FRIRVRV	de novo	7	
+129	VSL2	AFKAFWKFVK...	de novo	13	
+130	VS2	KWFWKFVKFV...	de novo	11	
+131	L-K6	IKKILSKIKK...	modified	13	
+133	hLf1-11	GRRRRSVQWC...	modified	11	
+134	FS3	YAPWTNF	modified	7	
+135	Tet-213	KRWWKWWRRC	modified	10	
+136	1010cys	IRWRIRVWVR...	modified	13	
+137	Tet-20	KRWRIRVRVI...	modified	13	
+138	Tet-26	WIVVIWRRKR...	modified	13	
+139	FS8	YAPWTNA	modified	7	
+140	Chromofungin	RILSILRHQN...	modified	20	
+142	Cecropin B	KWKVFKKIEK...	insect	35	
+144	Magainin I	GIGLFLHSAG...	amphibian	23	
+145	CysLasio-III	CVNWKKILGK...	modified	16	
+146	DASamP1	FFGKVLKLIR...	de novo	13	
+147	BMAP-18	GRWKRWRKKW...	cow	18	
+148	Bactenecin	RLCRIVVIRV...	cow	12	
+149	CA-MA	KWKLFKKIGI...	modified	20	
+150	RTA3	RPAFRKAAFR...	bacteria	16	
+151	Dhvar4	KRLFKKLLFS...	modified	14	
+152	Dhvar5	LLLFLLKKRK...	modified	14	
+C-term amidation
+153	KABT-AMP	GIWKKWIKKW...	de novo	22	
+157	P10	LAREYKKIVE...	de novo	24	
+158	P60.4Ac	IGKEFKRIVE...	modified	24	
+C-term amidation
+159	OSIP108	MLCVLQGLRE	other	10	
+160	S-OSIP108	ELRLVCMGQL	modified	10	
+161	D-OSIP108	mlcvlqglre	modified	10	
+162	[CYC1]OSIP108	MLCVLQGLRE	modified	10	
+163	[CYC2]OSIP108	MLCVLQGLRE...	modified	12	
+164	[CYC3]OSIP108	MLCVLQGLRE...	modified	11	
+166	1018 or IDR-1018	VRLIVAVRIW...	modified	12	
+C-term amidation
+167	HE1 or RI1018	RRWIRVAVIL...	modified	12	
+168	HE2	VRLIRAVRAW...	modified	12	
+169	HE3	VRWARVARIL...	modified	12	
+170	HE4	VRLIWAVRIW...	modified	12	
+171	HE10	VRLIVRIWRR	modified	10	
+172	HE12	RFKRVARVIW	modified	10	
+173	paracentrin 1 (SP1)	EVASFDKSKL...	other	11	
+174	GL13KR1	IGIKLLKSKL...	de novo	13	
+175	(IKIK)2	IKIKIKIK	de novo	8	
+177	RI1012	FKKVIVIRRW...	modified	12	
+C-term amidation
+178	RI1002	KRIRWVILWR...	modified	12	
+C-term amidation
+179	LJK1	VFLRRIRVIV...	modified	12	
+C-term amidation
+180	DJK1	vflrrirviv...	modified	12	
+C-term amidation
+181	RIJK1	RIVIVRIRRL...	modified	12	
+C-term amidation
+182	LJK2	VFWRRIRVWV...	modified	12	
+C-term amidation
+183	DJK2	vfwrrirvwv...	modified	12	
+C-term amidation
+184	RIJK2	RIVWVRIRRW...	modified	12	
+C-term amidation
+185	LJK3	VQLRAIRVRV...	modified	12	
+C-term amidation
+186	RIJK3	RIVRVRIARL...	modified	12	
+C-term amidation
+187	DJK3	vqlrairvrv...	modified	12	
+C-term amidation
+188	LJK4	VQLRRIRVWV...	modified	12	
+C-term amidation
+189	RIJK4	RIVWVRIRRL...	modified	12	
+C-term amidation
+190	DJK4	vqlrrirvwv...	modified	12	
+C-term amidation
+191	LJK5	VQWRAIRVRV...	modified	12	
+C-term amidation
+192	RIJK5	RIVRVRAIRW...	modified	12	
+C-term amidation
+193	DJK5	vqwrairvrv...	modified	12	
+C-term amidation
+194	LJK6	VQWRRIRVWV...	modified	12	
+C-term amidation
+195	RIJK6	RIVWVRIRRW...	modified	12	
+C-term amidation
+196	DJK6	vqwrrirvwv...	modified	12	
+C-term amidation
+197	Dhvar5-Ct_AHA_C	LLLFLLKKRK...	modified	14	
+C-term (6-amino-hexanoyl)-Cys
+198	Nal-P-113	AKRXXGYKRK...	modified	13	
+199	P15	GTPGPQGIAG...	modified	15	
+200	P15-CSP	GTPGPQGIAG...	modified	53	
+201	C_AHA_Nt-Dhvar5	LLLFLLKKRK...	modified	14	
+N-term-Cys-(6-amino-hexanoyl)
+202	C_ABA_Nt-Dhvar5	LLLFLLKKRK...	modified	14	
+N-term-Cys-(4-aminobutanoyl)
+203	C_GG_Nt-Dhvar5	CGGLLLFLLK...	modified	17	
+204	KT2	NGVQPKYKWW...	modified	17	
+205	RT2	NGVQPKYRWW...	modified	17	
+206	O-LF11-215	FWRIRIRR	modified	8	
+C-term amidation octanoyl
+207	DI-MB-LF11-215	FWRIRIRR	modified	8	
+C-term amidation 2,2-dimethylbutanoyl
+208	6-MO-LF11-215	FWRIRIRR	modified	8	
+C-term amidation 6-methyloctanoyl
+209	LF11-322	PFWRIRIRR	modified	9	
+C-term amidation
+210	DI-MB-LF11-322	PFWRIRIRR	modified	9	
+C-term amidation 2,2-dimethylbutanoyl
+211	6-MO-LF11-322	PFWRIRIRR	modified	9	
+C-term amidation 6-methyloctanoyl
+212	LF11-324	PFFWRIRIRR	modified	10	
+C-term amidation
+213	LF11-227	FWRRFWRR	modified	8	
+C-term amidation
+214	O-LF11-227	FWRRFWRR	modified	8	
+C-term amidation octanoyl
+215	6-MO-LF11-227	FWRRFWRR	modified	8	
+C-term amidation 6-methyloctanoyl
+216	LF11-215	FWRIRIRR	modified	8	
+C-term amidation
+217	D-ATRA-1A	krakkffkkl...	modified	11	
+218	ATRA-1A	KRAKKFFKKL...	modified	11	
+219	ATRA-2	KRAKKFFKKP...	modified	11	
+220	ATRA-1	KRFKKFFKKL...	modified	11	
+221	All L-K6L9	LKLLKKLLKK...	de novo	15	
+C-term amidation
+222	D,L-K6L9	LKlLKkLlkK...	de novo	15	
+C-term amidation
+223	Seg5L	KKKLLLLLLL...	de novo	15	
+C-term amidation
+224	Seg5D	KKkLLlLllL...	de novo	15	
+C-term amidation
+225	Seg6L	LLLLLKKKKK...	de novo	15	
+C-term amidation
+226	Seg6D	LLlLLkKkkK...	de novo	15	
+C-term amidation
+227	G10	KNLRRIIRKG...	de novo	18	
+229	lin-SB056	WKKIRVRLSA	de novo	10	
+C-term amidation
+230	lin-SB056-1	KWKIRVRLSA	de novo	10	
+C-term amidation
+231	Myxinidin2	KIKWILKYWK...	modified	12	
+232	Myxinidin3	RIRWILRYWR...	modified	12	
+233	GH12	GLLWHLLHHL...	de novo	12	
+C-term amidation
+234	Pa-MAP 1.9	LAAKLTKAAT...	de novo	24	
+236	HsAFP1	DGVKLCDVPS...	plant	54	
+237	HsLin06	EHFAYGGAXH...	de novo	24	

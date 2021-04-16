@@ -1,2 +1,0 @@
-id	Sequence
-4199	lw

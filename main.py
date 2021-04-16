@@ -1,31 +1,39 @@
 """
-DBAASP Database of Antimicrobial Activity and Structure of Peptides
-AVPdb | database of experimentally validated antiviral peptides
-HIPdb | A Database of Experimentally Validated HIV Inhibiting Peptide
-Hemolytik Database of Hemolytic activity of AMPs.
-BaAMPs | Biofilm-active AMPs database: antimicrobial peptides (AMPs) specifically tested against microbial biofilms.
-MilkAMP | A database for milk AMPs (a comprehensive database of antimicrobial peptides of dairy origin)
-DADP | Database of Anuran Defense Peptides
+AVPdb database of experimentally validated antiviral peptides
+HIPdb A Database of Experimentally Validated HIV Inhibiting Peptide
+AntiBP2 : Server for antibacterial peptide prediction
+DBAASP V.3 Database of Antimicrobial Activity and Structure of Peptides
+DADP: Database of Anuran Defense Peptides
 CancerPPD Database of Anticancer peptides and proteins
-AntiCP| Consists of 225 antimicrobial peptides with anticancer properties.
-LAMP2 | An update to LAMP database linking antimicrobial peptide.
-Antimicrobial Peptide Database (APD3, http://aps.unmc.edu/AP/main.php)
-EnzyBase  | Database of enzybiotics (lysins, autolysins, lysozymes, and large bacteriocins) (Not sure)
-EROP-Moscow | The EROP-Moscow oligopeptide database
-BACTIBASE | Database Dedicated to Bacteriocin (Filter by antimicrobial keyword  )
-DRAMP 2.0, | an updated data repository of antimicrobial peptides
-AVPpred: | collection and prediction of highly effective antiviral peptides. 
-PeptideDB | database assembles all naturally occurring signalling peptides from animal source
-dbAMPv1.4, an integrated resource for exploring antimicrobial peptides
-Inverpred | is a specialized database of AMPs from invertebrates.
+AntiTbPred | Prediction of antitubercular peptides
+AntiCP Consists of 225 antimicrobial peptides with anticancer properties.
 Antifp | is an in silico method, which is developed to predict and design antifungal peptides
 ADAM | A Database of Anti-Microbial peptides
-AntiTbPred | Prediction of antitubercular peptides
+Inverpred | is a specialized database of AMPs from invertebrates.
+PeptideDB database assembles all naturally occurring signalling peptides from animal source
+BACTIBASE : Database Dedicated to Bacteriocin (Filter by antimicrobial keyword )
+PeptideDB database assembles all naturally occurring signalling peptides from animal source
+Antimicrobial Peptide Database (APD3, https://wangapd3.com/downloads.php)
+MilkAMP A database for milk AMPs (a comprehensive database of antimicrobial peptides of dairy origin)
+BACTIBASE : Database Dedicated to Bacteriocin (Filter by antimicrobial keyword )
+AVPpred: collection and prediction of highly effective antiviral peptides.
+ADAPTABLE is both a webserver and data-miner of antimicrobial peptides. 
+BaAMPs | Biofilm-active AMPs database: antimicrobial peptides (AMPs) specifically tested against microbial biofilms.
+dbAMP v1.4, an integrated resource for exploring antimicrobial peptides
+DRAMP 2.0, an updated data repository of antimicrobial peptides
+Hemolytik Database of Hemolytic activity of AMPs. <-- เอา ID ของ  CP and toxix ออก
+EROP-Moscow The EROP-Moscow oligopeptide database
+EnzyBase Database of enzybiotics (lysins, autolysins, lysozymes, and large bacteriocins) (อันที่เป็น ช่องว่างในต่ำเเหน่งที่สองของ ID ถือว่าเป็น synthetic)
+AmPEP: Sequence-based prediction of antimicrobial 
+-----
+Not include:
+YADAMP: yet another database of antimicrobial peptides  
+
 """
 # %%
 import pandas as pd
 import os 
-
+from Bio import SeqIO
 root_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/AMPs"
 root_output_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/fasta"
 
@@ -44,7 +52,7 @@ def createID(ID, source, seq_type=None, description=None):
 # 2. remove whitespace
 
 def converterForDRAMP(filename):
-    input_path = os.path.join(root_path, filename+".xlsx")
+    input_path = os.path.join(root_path+"/DRAMP/",  filename+".xlsx")
     out_path = os.path.join(root_output_path, filename+".fasta")
     # Load File
     df = pd.read_excel(input_path, header=[0])
@@ -56,6 +64,10 @@ def converterForDRAMP(filename):
                 continue
             if  "-spacer-" in  row['Sequence']:
                 continue
+            if "-" in row['Sequence']:
+                print("Found '-':"+row['Sequence'])
+                continue
+
             header = createID(row['DRAMP_ID'], filename)
             #print(header)
             file.write(header + '\n')
@@ -63,29 +75,38 @@ def converterForDRAMP(filename):
             if " " in seq:
                 #print("Found whitespace:"+seq)
                 seq = seq.replace(" ", "")
-            if "-" in seq:
-                print("Found '-':"+seq)
             file.write(seq + '\n')
 
 def groupDRAMPDuplication(df):
+    # Filter 
+    Bad_words = ["Unknown","Not found","Non-antibacterial"
+                ,"Non-antimicrobial"]
+    df = df[~ df['Activity'].isin(Bad_words)]            
+    # Remove empyty 
+    df = df[df['Sequence'].notna()]
+
     df['DRAMP_ID'] = df['DRAMP_ID'].astype(str)
     grouped_df = df.groupby("Sequence")
     grouped_lists = grouped_df["DRAMP_ID"].agg(lambda column: ",".join(column))
     grouped_lists = grouped_lists.reset_index()
     return grouped_lists
 
-file_names=["DRAMP_Antibacterial_amps",
-            "DRAMP_Anticancer_amps",
-            "DRAMP_Antifungal_amps",
-            "DRAMP_Anti-Gram-_amps",
-            "DRAMP_Anti-Gram+_amps",
-            "DRAMP_Antimicrobial_amps",
-            "DRAMP_Antiparasitic_amps",
-            "DRAMP_Antiprotozoal_amps",
-            "DRAMP_Antitumor_amps",
-            "DRAMP_Antiviral_amps",
-            "DRAMP_Insecticidal_amps",
-            ]
+file_names = ["general_amps","patent_amps","specific_amps",
+              "clinical_amps","DRAMP_Antimicrobial_amps"]
+
+
+#file_names=["DRAMP_Antibacterial_amps",
+#            "DRAMP_Anticancer_amps",
+##            "DRAMP_Antifungal_amps",
+#            "DRAMP_Anti-Gram-_amps",
+#            "DRAMP_Anti-Gram+_amps",
+#            "DRAMP_Antimicrobial_amps",
+#            "DRAMP_Antiparasitic_amps",
+#            "DRAMP_Antiprotozoal_amps",
+#            "DRAMP_Antitumor_amps",
+#            "DRAMP_Antiviral_amps",
+#            "DRAMP_Insecticidal_amps",
+#            ]
 
 print("--- DRAMP ----")
 
@@ -101,7 +122,7 @@ print("--- End of DRAMP ----")
 searchfor = ["not available", "structure given"]
 
 def converterForCancerPPD(filename):
-    input_path = os.path.join(root_path, filename+".txt")
+    input_path = os.path.join(root_path + "/CancerPPD/", filename+".txt")
     out_path = os.path.join(root_output_path, filename+".fasta")
     # Load File
     df = pd.read_csv(input_path, sep='\t', header=[0])
@@ -176,19 +197,21 @@ print("--- End of AVPdb_data ----")
 # lower case?
 print("--- BAAMPs_data ----")
 filename = "BAAMPs_data"
-input_path = os.path.join(root_path, filename+".csv")
+input_path = os.path.join(root_path, "BaAMPs/"+filename+".csv")
 out_path = os.path.join(root_output_path, filename+".fasta")
 # Load File
-df = pd.read_csv(input_path, header=[0])
+df = pd.read_csv(input_path, header=0)
 # remove duplicate among same ID
 df = df.drop_duplicates(subset=["PeptideID", "PeptideName", "PeptideSequence"], keep="last")
+# remove any record that wasn't validated 
+df = df[df['ExperimentStatus'] ==  "Validated"]
 # Group duplication
 df['PeptideID'] = df['PeptideID'].astype(str)
 grouped_df = df.groupby("PeptideSequence")
 grouped_lists = grouped_df["PeptideID"].agg(lambda column: ",".join(column))
 grouped_lists = grouped_lists.reset_index()
 
-print(file_name)
+print(filename)
 with open(out_path, 'w') as file:
     for index, row in grouped_lists.iterrows():
         header = createID(row['PeptideID'], filename)
@@ -224,6 +247,9 @@ with open(out_path, 'w') as file:
         # print(header)
         file.write(header + '\n')
         seq = row['Sequence']
+        if " " in seq:
+            print("Found whitespace:"+seq)
+            seq = seq.replace(" ", "")
         # print(seq)
         file.write(seq + '\n')
 print("--- End of anticp_225_amp_pos ----")
@@ -234,14 +260,33 @@ print("--- End of anticp_225_amp_pos ----")
 # lower case?
 
 print("--- Hemolytik_allsequences ----")
-filename = "Hemolytik_allsequences_02_09_2020"
-input_path = os.path.join(root_path, filename+".txt")
+file_names=["naturalseqD",
+            "naturalseqL",
+            "naturalseqmix",
+            ]
+exclude_file_name = ["CPP", "Toxic"]
+
+df = pd.DataFrame()
+ex_df = pd.DataFrame()
+
+for ex_file_name in exclude_file_name:
+    input_path = os.path.join(root_path +"/HEMOLYTIK/", ex_file_name+".txt")
+    df1 = pd.read_csv(input_path, header=[0], sep='\t', encoding='utf8' )
+    ex_df = ex_df.append(df1, ignore_index = True)
+
+for file_name in file_names:
+    input_path = os.path.join(root_path+"/HEMOLYTIK/", file_name+".txt")
+    df1 = pd.read_csv(input_path, header=[0], sep='\t', encoding='utf8' )
+    df = df.append(df1, ignore_index = True)
+
+### start ID excluding 
+df = df[~ df.ID.isin(ex_df.ID)]
+
+filename = "Hemolytik"
 out_path = os.path.join(root_output_path, filename+".fasta")
-
-df = pd.read_csv(input_path, header=[0], sep='\t', encoding='utf8' )
 # create new ID
-df['ID'] = df['ID'].apply(lambda row: str(row)+"_Hemolytik_allsequences")
 
+df['ID'] = df['ID'].apply(lambda row: str(row)+"_"+filename)
 searchfor = ["β", "[", "]","(" , ")", "/", "-", "Ψ","Δ",
  "1","2","3","4","5","6","7","8","9","0"] 
 #df = df[~df.SEQ.str.contains('|'.join(searchfor), case=False)]
@@ -277,13 +322,14 @@ print("--- End of Hemolytik_allsequences ----")
 
 # %% 
 # HIPdb_data
-# Format data ? utf-16 -> utf-8 
+# Format data? change utf-16 -> utf-8 
 print("--- HIPdb_data ----")
 filename = "HIPdb_data"
 input_path = os.path.join(root_path, filename+".csv")
 out_path = os.path.join(root_output_path, filename+".fasta")
 
-df = pd.read_csv(input_path, header=0, encoding="utf-8", usecols=['ID', 'SEQUENCE'])
+df = pd.read_csv(input_path, sep =',', header=0, encoding="utf-8"
+                , usecols=['ID', 'SEQUENCE'])
 
 # Group duplication
 df['ID'] = df['ID'].astype(str)
@@ -313,20 +359,24 @@ print("--- End of HIPdb_data ----")
 import csv
 
 print("--- dbaasp_peptides ----")
-filename = "dbaasp_peptides"
+filename = "dbaasp.peptides"
 input_path = os.path.join(root_path, filename+".csv")
 out_path = os.path.join(root_output_path, filename+".fasta")
 
-df = pd.read_csv(input_path, header=0, usecols=['ID', 'SEQUENCE'])
+df = pd.read_csv(input_path, header=0, usecols=['ID', 'SEQUENCE', 'COMPLEXITY'])
 # create new ID
 df['ID'] = df['ID'].apply(lambda row: str(row)+"_dbaasp")
 
+print("Original df: "+str(len(df)))
+## remove multi-peptides and multimer
+df = df[df['COMPLEXITY'] == "Monomer"]
+print("Filterd df: "+str(len(df)))
 # Group duplication
 df['ID'] = df['ID'].astype(str)
 grouped_df = df.groupby("SEQUENCE")
 grouped_lists = grouped_df["ID"].agg(lambda column: ",".join(column))
 grouped_lists = grouped_lists.reset_index()
-
+print("Final df: "+str(len(grouped_lists)))
 print(filename)
 with open(out_path, 'w') as file:
     for index, row in grouped_lists.iterrows():
@@ -356,8 +406,10 @@ out_path = os.path.join(root_output_path, filename+".fasta")
 df = pd.read_json(input_path)
 # split column in to multiple columns by comma 
 df = pd.concat([df['aaData'], df['aaData'].apply(pd.Series)],axis=1)
-# Group duplication
-df[0] = df[0].astype(str)
+
+df = df.drop(['aaData'], axis=1)
+
+# Group duplication  , select on column 6 (Bioactive sequence)
 grouped_df = df.groupby(6)
 grouped_lists = grouped_df[0].agg(lambda column: ",".join(column))
 grouped_lists = grouped_lists.reset_index()
@@ -372,23 +424,31 @@ with open(out_path, 'w') as file:
         # print(header)
         file.write(header + '\n')
         seq = row[6]
+        if " " in seq:
+           print(seq)
+           seq = seq.replace(" ", "")
+
         # print(seq)
         file.write(seq + '\n')
 
 print("--- End of DAPD ----")
 # %%
-# DAPD
+# milkampdb
 print("--- milkampdb ----")
 filename = "milkampdb"
 input_path = os.path.join(root_path, filename+".csv")
 out_path = os.path.join(root_output_path, filename+".fasta")
 
-df = pd.read_csv(input_path, header=0, usecols=['id', 'Sequence'])
+df = pd.read_csv(input_path, header=0, usecols=['id','Activity', 'Sequence'])
+
+# Filter "No activity detected"
+df = df[df['Activity'] !=  "No activity detected"]
+df = df[df['Activity'] !=  "Not determined"]
 # trim white space 
 df['Sequence'] = df['Sequence'].str.strip()
 # remove empty value / Not protein symbol
 df = df.dropna()
-df = df[~df.Sequence.str.contains("Not determined")]
+df = df[~ df.Sequence.str.contains("Not determined", na=False)]
 # chop semicolon 
 df['Sequence'] = df['Sequence'].str.split(';').str[0]
 
@@ -401,7 +461,7 @@ print(filename)
 with open(out_path, 'w') as file:
     for index, row in grouped_lists.iterrows():
         seq = row['Sequence']
-        if "/" in seq: # temporally fix
+        if "/" in seq: # temporally fix (just ignore it )
            continue
         header = createID(row['id'], filename)
         # print(header)
@@ -441,6 +501,11 @@ out_path = os.path.join(root_output_path, filename+".fasta")
 
 with open(out_path, 'w') as f_out:
     for seq_record in SeqIO.parse(open(input_path, mode='r'), 'fasta'):
+
+        splited = seq_record.id.split('|')
+        if splited[1] =='':
+            continue
+
         if "-" in  seq_record.seq:
             print('SequenceID = '  + seq_record.id)
             continue
@@ -454,6 +519,17 @@ print("--- End of enzy2 ----")
 # LAMP2
 # lower case?
 print("--- LAMP2 ----")
+import xml.etree.ElementTree as et 
+filename="LAMP2"
+input_path = os.path.join(root_path, filename+".XML")
+xtree = et.parse(input_path)
+print(xtree)
+
+xroot = xtree.getroot()
+print(xroot)
+
+
+# %%
 filename = "LAMP2"
 input_path = os.path.join(root_path, filename+".FASTA")
 out_path = os.path.join(root_output_path, filename+".fasta")
@@ -471,6 +547,7 @@ with open(input_path, mode='r') as in_file, \
     out_file.write("\n")
 
 print("--- End of LAMP2 ----")
+
 # %%
 # erop
 # +: to denote +H2, which is the open N-terminus
@@ -480,6 +557,15 @@ print("--- End of LAMP2 ----")
 # J: to denote the pyroglutaminyl linkage, formed by an N-terminal glutamine, due to side-chain reaction with the terminal amine residue
 # U: for the (occasional) aminoisobutyric acid residue.
 #
+
+def replace_char_at_index(org_str, index, replacement):
+    ''' Replace character at index in string org_str with the
+    given replacement character.'''
+    new_str = org_str
+    if index < len(org_str):
+        new_str = org_str[0:index] + replacement + org_str[index + 1:]
+    return new_str
+
 print("--- erop ----")
 filename = "erop"
 input_path = os.path.join(root_path, filename+".FASTA")
@@ -491,7 +577,22 @@ with open(input_path, mode='r') as in_file, \
         if line.startswith(">"): # skip lines that start with > 
             out_file.write(line.strip()+ '\n')
             continue
+        # J start with 
+        if(line.startswith('J')):
+            line = replace_char_at_index(line, 0, '')
 
+        # and end with J 
+        if(line.endswith('J')):
+            line = replace_char_at_index(line, len(line)-1, '')
+
+        # start with U
+        if(line.startswith('U')):
+            line = replace_char_at_index(line, 0, '')
+
+        # and end with U 
+        if(line.endswith('U')):
+            line = replace_char_at_index(line, len(line)-1, '')
+    
         line = line.replace("+", "")
         line = line.replace("-", "")
         line = line.replace("b", "")
@@ -538,7 +639,7 @@ print("--- peptideDB.anti ----")
 filename = "peptideDB.anti"
 
 counter=0
-input_path = os.path.join(root_path, filename+".FASTA")
+input_path = os.path.join(root_path, filename+".fasta")
 out_path = os.path.join(root_output_path, filename+".fasta")
 df = pd.DataFrame(columns=['ID','Sequence'])
 
@@ -590,13 +691,16 @@ print("--- End of dbAMPv1.4_validated ----")
 
 # %% inverpred
 print("--- inverpred  ----")
-filename = "inverpred"
-input_path = os.path.join(root_path, filename+".txt")
+filename = "InverPep"
+input_path = os.path.join(root_path, filename+".csv")
 out_path = os.path.join(root_output_path, filename+".fasta")
-df = pd.read_csv(input_path, header=0, sep="\t")
+df = pd.read_csv(input_path, header=0, sep=",")
 # create new ID
 df['ID'] = df.index
 df['ID'] = df['ID'].apply(lambda row: str(row)+"_"+filename)
+
+## Filter Origen
+df = df[df["Origen"] == "experimentally validated"]
 
 # Group duplication
 grouped_df = df.groupby('Secuencia')
@@ -616,20 +720,32 @@ print("--- End of inverpredd ----")
 
 # %%
 # Antifp
+## pos_train_ds1 =  1168 antifungal peptides as positive dataset obtained from DRAMP 
+## pos_test_ds1 = 291 antifungal peptides as positive dataset obtained from DRAMP 
+## main_antifp_pos_train_ds2 = Dataset contains 1168 antifungal peptides as positive dataset obtained from DRAMP
+## amp_otherthan_antifungal _test_ds1 =  291 antimicrobial peptides other than antifungal 
+## amp_otherthan_antifungal _train_ds1 = 1168 antimicrobial peptides other than antifungal as negative dataset obtained from DRAMP database.
 print("--- Antifp pos_train_ds3  ----")
 
-filename = "pos_train_ds3"
-input_path = os.path.join(root_path, filename+".txt")
-out_path = os.path.join(root_output_path, filename+".fasta")
-df = pd.read_csv(input_path, header=0, sep="\t")
-# create new ID
-df['ID'] = df.index
-df['ID'] = df['ID'].apply(lambda row: str(row)+"_"+filename)
+filenames = ["pos_train_ds1","pos_test_ds1", "amp_otherthan_antifungal _test_ds1",
+            "amp_otherthan_antifungal _train_ds1","main_antifp_pos_train_ds2"]
+df = pd.DataFrame()
+
+# loop 
+for filename in filenames:
+    input_path = os.path.join(root_path + "/antifp/", filename+".txt")
+    _df = pd.read_csv(input_path, header=None, names=['Sequence'], sep="\t")
+    # create new ID
+    _df['ID'] = _df.index 
+    _df['ID'] = _df['ID'].apply(lambda row: str(row)+"_"+filename)
+    df = df.append(_df, ignore_index=True)
 
 # Group duplication
 grouped_df = df.groupby('Sequence')
 grouped_lists = grouped_df['ID'].agg(lambda column: ",".join(column))
 grouped_lists = grouped_lists.reset_index()
+filename = "Antifp"
+out_path = os.path.join(root_output_path, filename+".fasta")
 print(filename)
 with open(out_path, 'w') as file:
     for index, row in grouped_lists.iterrows():
@@ -644,7 +760,7 @@ print("--- End of Antifp pos_train_ds3 ----")
 # ADAM
 print("---  ADAM  ----")
 
-filename = "adam_test"
+filename = "adam"
 input_path = os.path.join(root_path, filename+".txt")
 out_path = os.path.join(root_output_path, filename+".fasta")
 df = pd.read_csv(input_path, header=0, sep="\t")
@@ -671,7 +787,7 @@ print("--- End of ADAM ----")
 # AntiTbPred
 print("--- antitbpred  ----")
 
-filename = "antitbpred"
+filename = "antitbpred_pos"
 input_path = os.path.join(root_path, filename+".txt")
 out_path = os.path.join(root_output_path, filename+".fasta")
 df = pd.read_csv(input_path, header=0, sep="\t")
@@ -691,8 +807,78 @@ with open(out_path, 'w') as file:
         # print(header)
         file.write(header + '\n')
         # print(seq)
+        if " " in seq:
+           print(seq)
+           seq = seq.replace(" ", "")
         file.write(seq + '\n' )
 print("--- End of antitbpred ----")
+
+# %%
+## YADAMP
+print("--- YADAMP ----")
+filename = "YADAMP.data"
+input_path = os.path.join(root_path, filename+".txt")
+out_path = os.path.join(root_output_path, filename+".fasta")
+
+df = pd.read_json(input_path)
+# split column in to multiple columns by comma 
+df = pd.concat([df['aaData'], df['aaData'].apply(pd.Series)],axis=1)
+
+df = df.drop(['aaData'], axis=1)
+
+# Group duplication  , select on column 6 (Bioactive sequence)
+grouped_df = df.groupby(6)
+grouped_lists = grouped_df[0].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        if row[6] == "/":
+            continue
+        header = createID(row[0], filename)
+        # print(header)
+        file.write(header + '\n')
+        seq = row[6]
+        if " " in seq:
+           print(seq)
+           seq = seq.replace(" ", "")
+
+        # print(seq)
+        file.write(seq + '\n')
+
+
+
+# %%
+## AntiBP2
+print("--- antibp2_data ----")
+filename = "antibp2"
+input_path = os.path.join(root_path + "/antibp2/", filename+".tsv")
+out_path = os.path.join(root_output_path, filename+".fasta")
+# Load File
+df = pd.read_csv(input_path, header=[0], delimiter='\t')
+
+# Group duplication
+df['AVP_ID'] = df['AVP_ID'].astype(str)
+grouped_df = df.groupby("Sequence")
+grouped_lists = grouped_df["AVP_ID"].agg(lambda column: ",".join(column))
+grouped_lists = grouped_lists.reset_index()
+
+print(filename)
+with open(out_path, 'w') as file:
+    for index, row in grouped_lists.iterrows():
+        header = createID(row['AVP_ID'], filename)
+        # print(header)
+        file.write(header + '\n')
+        seq = row['Sequence']
+        if " " in seq:
+            print("Found whitespace:"+seq)
+            seq = seq.replace(" ", "")
+        # print(seq)
+        file.write(seq + '\n')
+print("--- End of antibp2_data ----")
+
+
 
 
 ###########################  Final steps ##########################################
@@ -709,6 +895,58 @@ for f in os.listdir(root_output_path):
     fh.close()
 oh.close()
 print("------ Merging completed ------")
+
+# %%
+# Remove non coding 
+amp_DB_fasta = os.path.join(DIR,'one_fasta_file.fasta')
+PROTIEN_CODE = "A|C|D|E|F|G|H|I|K|L|M|N|P|Q|R|S|T|V|W|Y"
+allowed_chars  = set("ACDEFGHIKLMNPQRSTVWY")
+with open(amp_DB_fasta) as fasta_file:  # Will close handle cleanly
+    identifiers = []
+    lengths = []
+    sequence = []
+    for seq_record in SeqIO.parse(fasta_file, 'fasta'):  # (generator)
+        identifiers.append(seq_record.id)
+        sequence.append(str(seq_record.seq))
+        lengths.append(len(seq_record.seq))
+
+_AMPs_df = pd.DataFrame(list(zip(identifiers, sequence, lengths)), columns =['ID', 'Sequence', 'length'])
+_AMPs_df['Sequence'] = _AMPs_df['Sequence'].str.upper()
+#_AMPs_df = _AMPs_df[_AMPs_df["Sequence"].str.contains(PROTIEN_CODE, regex=True)]
+# allow some character onyl
+_AMPs_df = _AMPs_df[_AMPs_df['Sequence'].apply(lambda x: set(x).issubset(allowed_chars))]
+_AMPs_df = _AMPs_df[_AMPs_df["length"]>=5]
+# remove unannotated ID
+_AMPs_df = _AMPs_df[_AMPs_df["ID"] != "_"]
+
+# get less than or equal 30 
+_AMPs_df_30 = _AMPs_df[_AMPs_df["length"] <= 30]
+# get greater than 30
+_AMPs_df_gt_30 = _AMPs_df[_AMPs_df["length"] > 30]
+
+
+#### Save 
+with open(os.path.join(DIR,'AMP.lte30.fasta'), 'w') as file:
+    for index, row in _AMPs_df_30.iterrows():
+        file.write('>'+ row['ID'] + '\n')
+        file.write(row['Sequence'] + '\n')
+file.close()
+
+with open(os.path.join(DIR,'AMP.gt30.fasta'), 'w') as file:
+    for index, row in _AMPs_df_gt_30.iterrows():
+        file.write('>'+ row['ID'] + '\n')
+        file.write(row['Sequence'] + '\n')
+file.close()
+
+with open(os.path.join(DIR,'AMP.26DBs.fasta'), 'w') as file:
+    for index, row in _AMPs_df.iterrows():
+        file.write('>'+ row['ID'] + '\n')
+        file.write(row['Sequence'] + '\n')
+file.close()
+
+
+
+
 
 # %%
 # Sort in Descending order ( sort them by length, the longest records first)

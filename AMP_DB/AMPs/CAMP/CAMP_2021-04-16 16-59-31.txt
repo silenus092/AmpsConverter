@@ -1,0 +1,26 @@
+  Camp_ID	gi	UniProt_id	PDBID	Title	Source_Organism	Taxonomy	Seqence	Length	Pubmed_id	Activity	Gram_Nature	Validation
+CAMPSQ225	19924221	P56923		Temporin-K	Rana temporaria	Animalia (Amphibians)	LLPNLLKSLL	10	9022710	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ652	90183454	P84785		Coccinin	Phaseolus coccineus 	Viridiplantae	KQTENLADTY	10	15572193	Antifungal,Antiviral		Experimentally Validated
+CAMPSQ654	91208279	P84796		Alliumin	Allium sativum	Viridiplantae	DDFLCAGGCL	10	15629528	Antibacterial,Antifungal	Gram-ve	Experimentally Validated
+CAMPSQ890	3913442	O16137		Defensin 2a 	Stomoxys calcitrans	Animalia (Insects)	ATCDLLSMWN	10	9326639	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ927	67460129	P0C005		Anoplin	Anoplius samariensis	Animalia (Insects)	GLLKRIKTLL	10	11738089	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1172				E10KKL	Synthetic construct		LKKLLKKLKK	10	7726486	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1940	88909607	P84710		Curvalicin-28b	Lactobacillus curvatus	Bacteria	VAPFPEQFLX	10	16680519	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ2462	308191395	P86706		Antimicrobial peptide 2	Cocos nucifera	Viridiplantae	ESYFVFSVGM	10	19111587	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ2476	380876853	B3EWE8		Antifungal peptide 1	Trapa natans  	Viridiplantae	MCTHPLDCSN	10	21736910	Antifungal		Experimentally Validated
+CAMPSQ2574	363805424	C6FX52	2ZJP	Nosiheptide precursor	Streptomyces actuosus  	Bacteria	CTTCECCCSCS	11	19678698	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ2836				  PG-KI  	Pseudophryne guentheri	Animalia (Amphibians)	EPHPDEFVGLM	11	2356157	Antimicrobial		Experimentally Validated
+CAMPSQ2837				  PG-KII  	Pseudophryne guentheri	Animalia (Amphibians)	EPNPDEFVGLM	11	2356157	Antimicrobial		Experimentally Validated
+CAMPSQ2838				  PG-KIII  	Pseudophryne guentheri	Animalia (Amphibians)	EPHPNEFVGLM	11	2356157	Antimicrobial		Experimentally Validated
+CAMPSQ2839				  PG-SPI  	Pseudophryne guentheri	Animalia (Amphibians)	EPNPDEFFGLM	11	2356157	Antimicrobial		Experimentally Validated
+CAMPSQ2840				  PG-SPII  	Pseudophryne guentheri	Animalia (Amphibians)	EPNPNEFFGLM	11	2356157	Antimicrobial		Experimentally Validated
+CAMPSQ3263				  Neurotensin 	Homo sapiens	Animalia (Mammals)	ERPPGFSPFR	10	12074933	Antibacterial, Antifungal		Experimentally Validated
+CAMPSQ3266				  Neurokinin A 	Homo sapiens	Animalia (Mammals)	HKTDSFVGLM	10	18603306	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3271				  Urechistachykinin I 	Urechis unicinctus	Animalia (Annelids (Polychaeta))	LRQSQFVGSR	10	18570895	Antimicrobial		Experimentally Validated
+CAMPSQ3272				  Urechistachykinin II 	Urechis unicinctus	Animalia (Annelids (Polychaeta))	AAGMGFFGAR	10	18570895	Antimicrobial		Experimentally Validated
+CAMPSQ3486				  Peptide 7 	Rapana venosa	Animalia (Molluscs (Gastropoda))	APPPGLSAGV	10	21703315	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ3525				  PGLa-H 	Xenopus laevis	Animalia (Amphibians)	KIAKVALKAL	10	22014884	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ8161		P0DMF2		Peptide Ctry2346	Chaerilus tryznai 	Animalia (Arachnids)	LLGGLLQSLL	10	23415044	Antiviral		Experimentally Validated
+CAMPSQ8168		P0DMF4		Peptide Ctry2606	Chaerilus tryznai 	Animalia (Arachnids)	GILDAITGLL	10	23415044	Antiviral		Experimentally Validated
+CAMPSQ8172		P0DMF6		Peptide Ctri9293	Chaerilus tricostatus 	Animalia (Arachnids)	GILDALTGIL	10	23415044	Antiviral		Experimentally Validated
+CAMPSQ8187				Tet213	Synthetic construct		KRWWKWWRRC	10	25785171	Antibacterial	Gram+ve	Experimentally Validated

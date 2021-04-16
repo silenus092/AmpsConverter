@@ -1,0 +1,26 @@
+  Camp_ID	gi	UniProt_id	PDBID	Title	Source_Organism	Taxonomy	Seqence	Length	Pubmed_id	Activity	Gram_Nature	Validation
+CAMPSQ14	110279044	P0C1M4		Mastoparan-like peptide 12a	Vespa magnifica 	Animalia (Insects)	INWKGIAAMAKKLL	14	16330062	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ25	110810422	P0C1Q4		Mastoparan-1 	Polybia paulista	Animalia (Insects)	IDWKKLLDAAKQIL	14	16129513	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ28	111118804	Q0PJU7		Astacidin 2 	Pacifastacus leniusculus	Animalia (Crustaceans (Malacostraca))	RPRPNYRPRPIYRP	14	17049601	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ254	246037	P33046	1G89,1G8C,1HR1,1QX9,1QXQ	Indolicidin 	Bos taurus 	Animalia (Mammals)	ILPWKWPWWPWRR	13	1537821	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ293	25453058	P83305		Japonicin-1	Rana japonica	Animalia (Amphibians)	FFPIGVFCKIFKTC	14	11835990	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ505	51701932	P84116		Temporin-1BYa	Rana boylii 	Animalia (Amphibians)	FLPIIAKVLSGLL	13	14531844	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ533	56748934	P84292		Hylaseptin-P1 	Hypsiboas punctatus	Animalia (Amphibians)	GILDAIKAIAKAAG	14	14715660	Antibacterial,Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ557	60389882	P69436		Agelaia-mastoparan 	Agelaia pallipes 	Animalia (Insects)	INWLKLGKAIIDAL	14	15225564	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ798				Temporin-1Gb	Rana grylio	Animalia (Amphibians)	SILPTIVSFLSKFL	14	9478010	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ799				Temporin-1Gd	Rana grylio	Animalia (Amphibians)	FILPLIASFLSKFL	14	Reference: Reid C.N., Bjourson A.J., Shaw C. (2001) Galensin, a novel homodimeric antimicrobial peptide from the defensive skin secretion of Kassina senegalensis: isolation, structural characterisation and cloning of precursor cDNA. Submitted (JUL-2001) t	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ800				Temporin-1Gc	Rana grylio	Animalia (Amphibians)	SILPTIVSFLTKFL	14	20167788	Antibacterial	Gram+ve	Experimentally Validated
+CAMPSQ1063				CGA 47-60	Synthetic construct		RILSILRHQNLLKE	14	10753865	Antifungal		Experimentally Validated
+CAMPSQ1069	68052006	P0C022		Eumenine mastoparan-AF	Anterhynchium flavomarginatum micado	Animalia (Insects)	INLLKIAKGIIKSL	14	15317499	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ1075	223635832	Q7M0J8		Antibiotic GE2270	Planobispora rosea	Bacteria	SCNCVCGFCCSCSP	14	1908853	Antibacterial 	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ2600	338817642	P86920		Antifungal protein 1	Arachis hypogaea	Viridiplantae	DSLSFSYNNFEEDD	14		Antifungal		Experimentally Validated
+CAMPSQ3347				  Japonicin-1Npa 	Nanorana parkeri	Animalia (Amphibians)	FLLFPLMCKIQGKC	14	20153801	Antimicrobial		Experimentally Validated
+CAMPSQ3349				  Japonicin-1Npb 	Nanorana parkeri	Animalia (Amphibians)	FVLPLVMCKILRKC	14	20153801	Antimicrobial		Experimentally Validated
+CAMPSQ3605				  Temporin-Ra 	Rana ridibunda	Animalia (Amphibians)	FLKPLFNAALKLLP	14	21956830	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3846		R4JNJ5		  Pantinin-1	Pandinus imperator	Animalia (Arachnids)	GILGKLWEGFKSIV	14	23624072	Antibacterial, Antifungal	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ3870		P0C912		Amythiamicin A 	Amycolatopsis sp. 	Bacteria	SCNCVCGVCCSCSP	14	8040071	Antibacterial		Experimentally Validated
+CAMPSQ8218				RN7-IN7	Synthetic construct		FLGGLIKPWWPWRR	14	26046345	Antibacterial	Gram+ve, Gram-ve	Experimentally Validated
+CAMPSQ8238				Mastoparan analogue 3	Synthetic construct		iNLKALAALAKKIL	14	26114809	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ8239				Mastoparan analogue 4	Synthetic construct		InLKALAALAKKIL	14	26114809	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ8241				Mastoparan analogue 6 (l form), 7 (d form) and 10	Synthetic construct		LIKKALAALAKLNIlikkalaalaklni	14	26114809	Antibacterial	Gram-ve	Experimentally Validated
+CAMPSQ8242				Mastoparan analogue 8	Synthetic construct		inlkalaalakkil	14	26114810	Antibacterial		Experimentally Validated
