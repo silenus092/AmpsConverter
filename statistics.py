@@ -50,6 +50,21 @@ def countProtien(file):
 
     plotCharDistribution(counts, total, file)
 
+def lengthDistribution(file_path):
+    head, tail = os.path.split(file_path) 
+    lengths = map(len, SeqIO.parse(file_path, 'fasta'))
+    fig = plt.figure(figsize = (50,50))
+    ax = fig.gca()
+    pandas.Series(lengths).hist(color='blue', bins=200, ax=ax)
+    plt.ylabel('Num of Seq with this length ')
+    plt.xlabel('Length of Seq')
+    plt.yticks(np.arange(0, 10000, 50))
+    plt.xticks(np.arange(0, 2500, 50))
+    plt.title(tail)
+    save_file_path = os.path.join(root_img_path, tail)
+    plt.savefig(save_file_path+'.lenDis.png')
+
+
 # %%
 for f in os.listdir(root_fasta_path):
     print( "---------"+ f + "---------")
@@ -68,23 +83,29 @@ file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100"
 countProtien(file)
 
 # %%
-# lenghtDistribution
-def lengthDistribution(file_path):
-    head, tail = os.path.split(file_path) 
-    lengths = map(len, SeqIO.parse(file_path, 'fasta'))
-    fig = plt.figure(figsize = (50,50))
-    ax = fig.gca()
-    pandas.Series(lengths).hist(color='blue', bins=200, ax=ax)
-    plt.ylabel('Num of Seq with this length ')
-    plt.xlabel('Length of Seq')
-    plt.yticks(np.arange(0, 10000, 50))
-    plt.xticks(np.arange(0, 2500, 50))
-    plt.title(tail)
-    save_file_path = os.path.join(root_img_path, tail)
-    plt.savefig(save_file_path+'.lenDis.png')
+# AMP.26DBs.fasta
+file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/AMP.26DBs.fasta"
+countProtien(file)
+lengthDistribution(file)
 
+# %%
+# AMP.gt30.fasta
+file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/AMP.gt30.fasta"
+countProtien(file)
+lengthDistribution(file)
+# %%
+# AMP.lte30.fasta
+file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/AMP.lte30.fasta"
+countProtien(file)
+lengthDistribution(file)
+
+
+
+# %%
+# lenghtDistribution
 file = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/AMP.nr80.fasta.clstr"
 lengthDistribution(file)
+
 # %%
 # lenghtDistribution For github
 def lengthDistribution(file_path):

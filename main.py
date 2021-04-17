@@ -898,6 +898,8 @@ print("------ Merging completed ------")
 
 # %%
 # Remove non coding 
+
+DIR = '/mnt/c/works/RKI/AMPsConverter/AMP_DB/'
 amp_DB_fasta = os.path.join(DIR,'one_fasta_file.fasta')
 PROTIEN_CODE = "A|C|D|E|F|G|H|I|K|L|M|N|P|Q|R|S|T|V|W|Y"
 allowed_chars  = set("ACDEFGHIKLMNPQRSTVWY")
@@ -918,6 +920,8 @@ _AMPs_df = _AMPs_df[_AMPs_df['Sequence'].apply(lambda x: set(x).issubset(allowed
 _AMPs_df = _AMPs_df[_AMPs_df["length"]>=5]
 # remove unannotated ID
 _AMPs_df = _AMPs_df[_AMPs_df["ID"] != "_"]
+# deduplicate
+_AMPs_df = _AMPs_df.drop_duplicates(subset=['Sequence'])
 
 # get less than or equal 30 
 _AMPs_df_30 = _AMPs_df[_AMPs_df["length"] <= 30]
@@ -964,12 +968,13 @@ print("------ Sorting completed ------")
 # Run clustering 
 from subprocess import Popen, PIPE
 
-output_report = '/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100'
+output_report = '/mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr40'
 
 process = Popen(['/mnt/c/works/RKI/tools/cdhit/cd-hit',
                     '-i', output_fasta_file,
                     '-o', output_report,
-                     "-c","1" ], stdout=PIPE, stderr=PIPE)
+                    '-n','2',
+                     "-c","0.4" ], stdout=PIPE, stderr=PIPE)
 stdout, stderr = process.communicate()
 print("------ stdout ------")
 print(stdout)   
