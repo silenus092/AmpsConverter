@@ -33,6 +33,7 @@ YADAMP: yet another database of antimicrobial peptides
 # %%
 import pandas as pd
 import os 
+import glob
 from Bio import SeqIO
 root_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/AMPs"
 root_output_path = "/mnt/c/works/RKI/AMPsConverter/AMP_DB/fasta"
@@ -878,7 +879,36 @@ with open(out_path, 'w') as file:
         file.write(seq + '\n')
 print("--- End of antibp2_data ----")
 
+# %%
+## CAMP
+print("--- CAMP ----")
+folder_name = "CAMP"
+out_path = os.path.join(root_output_path, folder_name+".fasta")
+all_files = glob.glob(root_path+"/"+folder_name+"/*.txt")
+li = []
+for filename in all_files:
+    df = pd.read_csv(filename, sep="\t" ,header=0)
+    li.append(df)
 
+df = pd.concat(li, axis=0, ignore_index=True)
+
+df = df.rename(columns={'  Camp_ID': 'Camp_ID' ,  'Seqence' :'Sequence'})
+df['Camp_ID'] = df['Camp_ID'].astype(str)
+df['Sequence'] = df['Sequence'].astype(str)
+df.drop_duplicates(subset=['Camp_ID'], ignore_index=True, inplace=True)
+
+with open(out_path, 'w') as file:
+    for index, row in df.iterrows():
+        header = createID(row['Camp_ID'], folder_name)
+        # print(header)
+        file.write(header + '\n')
+        seq = row['Sequence']
+        if " " in seq:
+            print("Found whitespace:"+seq)
+            seq = seq.replace(" ", "")
+        # print(seq)
+        file.write(seq + '\n')
+print("--- End of CAMP ----")
 
 
 ###########################  Final steps ##########################################
@@ -922,7 +952,7 @@ _AMPs_df = _AMPs_df[_AMPs_df["length"]>=5]
 _AMPs_df = _AMPs_df[_AMPs_df["ID"] != "_"]
 # deduplicate
 _AMPs_df = _AMPs_df.drop_duplicates(subset=['Sequence'])
-
+_AMPs_df['ID'] = _AMPs_df['ID'].str.replace("/", "_")
 # get less than or equal 30 
 _AMPs_df_30 = _AMPs_df[_AMPs_df["length"] <= 30]
 # get greater than 30
