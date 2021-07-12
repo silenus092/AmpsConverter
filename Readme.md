@@ -1,4 +1,6 @@
 # AMPsConverter
+(Version 04.04.2021)
+
 Tools for fasta conversion that supports the following AMP Databases 
 ```
 AVPdb database of experimentally validated antiviral peptides
@@ -871,7 +873,7 @@ print("--- End of antitbpred ----")
 ```
 
 
-# Clustering
+# Clustering (CD-HIT)
 We use [CD-HIT](https://github.com/weizhongli/cdhit/wiki) for clustering sequences to reduce sequence redundancy
 ```bash
 ./cd-hit -i /mnt/c/works/RKI/AMPsConverter/AMP_DB/one_fasta_file.sorted.fasta -o /mnt/c/works/RKI/AMPsConverter/AMP_DB/stats/nr100 -c 1  
@@ -884,3 +886,9 @@ Report basic statistics , please see `statistics.py`
 1. Report amino acid character in file
 2. Report lenght distribution
 3. Save a graph report in PNG format.
+
+-------------------------------------
+
+# Training set2
+
+Under trainingset2 folder contains all raw sequences that are used for the machine learning task.
